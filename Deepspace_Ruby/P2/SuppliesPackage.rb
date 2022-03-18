@@ -34,6 +34,12 @@ module DeepSpace
             @shieldPower
         end
 
+        #toString
+        def to_s
+            output = "SuppliesPackage [ ammoPower #{@ammoPower} ;fuelUnits "+
+                   "#{@fuelUnits}  ;shieldPower  #{@shieldPower} ]"
+        end 
+
     end
 
 end
