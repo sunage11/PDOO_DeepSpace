@@ -39,6 +39,11 @@ module DeepSpace
                 @nMedals
             end
 
+            # builds a new LootToUI object from self
+            def getUIVersion
+                LootToUI.new(self)
+            end
+
             #toString
             def to_s
                 output = "Loot [ nSupplies #{@nSupplies} ; " +

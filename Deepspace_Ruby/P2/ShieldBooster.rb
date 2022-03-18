@@ -42,11 +42,10 @@ module DeepSpace
             end 
         end
 
-        #toString
-        def to_s
-            output = "ShieldBooster [ name #{@name}" +
-             "; boost #{@boost} ; uses #{@uses} ]"
-        end 
+        # builds a new ShieldToUI object from self
+        def getUIVersion
+            ShieldToUI.new(self)
+        end
 
     end
 
