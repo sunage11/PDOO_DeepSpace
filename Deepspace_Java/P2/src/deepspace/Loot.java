@@ -70,6 +70,14 @@ public class Loot {
     }
     
     /**
+    * @brief builds a new LootToUI object from *this
+    * @return LootToUI
+    */
+    protected LootToUI getUIVersion(){ //DUDAAAA protected
+        return(new LootToUI(this));
+    }
+    
+    /**
     * @brief toString
     * @return String with info about the instance
     */
@@ -83,5 +91,7 @@ public class Loot {
         
         return output;
     }
+    
+    
  
 }

@@ -65,6 +65,14 @@ public class ShieldBooster {
     }
     
     /**
+    * @brief builds a new WeaponToUI object from *this
+    * @return WeaponToUI
+    */
+    protected ShieldToUI getUIVersion(){ //DUDAAAA protected
+        return(new ShieldToUI(this));
+    }
+    
+    /**
     * @brief toString
     * @return String with info about the instance
     */
@@ -76,6 +84,7 @@ public class ShieldBooster {
         
         return output;
     }
+    
     
  
 }
