@@ -38,6 +38,15 @@ module DeepSpace
             def nMedals
                 @nMedals
             end
+
+            #toString
+            def to_s
+                output = "Loot [ nSupplies #{@nSupplies} ; " +
+                         "nWeapons #{@nWeapons} ; " +
+                         "nShields  #{@nShields} ; " +
+                         "nHangars  #{@nHangars} ; " +
+                         "nMedals  #{@nMedals} ]"
+            end
         end
 
 end

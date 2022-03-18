@@ -48,6 +48,13 @@ module DeepSpace
             end 
         end
 
+        #toString
+        def to_s
+            output = "Weapon [ name #{@name} ; " +
+                     "type #{@type} ; " +
+                     "uses  #{@uses} ]"
+        end
+
     end
 
 end
