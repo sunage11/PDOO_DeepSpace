@@ -48,17 +48,14 @@ module DeepSpace
             end 
         end
 
-        # builds a new WeaponToUI object from self
-        def getUIVersion
-            WeaponToUI.new(self)
-        end
-
-        # toString
+        #toString
         def to_s
             output = "Weapon [ name #{@name} ; " +
                      "type #{@type} ; " +
                      "uses  #{@uses} ]"
         end
+        
+        
 
     end
 
