@@ -72,6 +72,19 @@ public class Weapon {
         }
     }
     
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "Weapon [ name " + name 
+                        + " ; WeaponType " + type 
+                        + " ; uses " + uses + " ]";
+        
+        return output;
+    }
+    
 }
     
 

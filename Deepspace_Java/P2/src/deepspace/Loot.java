@@ -17,6 +17,7 @@ public class Loot {
     private int nHangars;
     private int nMedals;
     
+    
     /**
     * @brief Constructor
     */
@@ -66,6 +67,21 @@ public class Loot {
     */
     int getNMedals () {
         return nMedals;
+    }
+    
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "Loot [ nSupplies " + nSupplies 
+                        + " ; nWeapons " + nWeapons 
+                        + " ; nShields " + nShields 
+                        + " ; nHangars " + nHangars 
+                        + " ; nMedals " + nMedals + " ]";
+        
+        return output;
     }
  
 }

@@ -57,5 +57,18 @@ public class SuppliesPackage {
         return shieldPower;
     }
     
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "SuppliesPackage [ ammoPower " + ammoPower 
+                        + " ; fuelUnits " + fuelUnits 
+                        +  " ; shieldPower " + shieldPower +" ]";
+        
+        return output;
+    }
+    
  
 }

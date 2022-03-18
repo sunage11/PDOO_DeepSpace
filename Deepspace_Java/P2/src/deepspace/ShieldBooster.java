@@ -64,5 +64,18 @@ public class ShieldBooster {
         }
     }
     
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "ShieldBooster [ name " + name 
+                        + " ; boost " + boost 
+                        + " ; uses " + uses + " ]";
+        
+        return output;
+    }
+    
  
 }
