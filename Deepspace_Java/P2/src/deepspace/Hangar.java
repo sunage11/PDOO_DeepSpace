@@ -1,7 +1,7 @@
 /**
  * @author BOLÍVAR PELÁEZ, CLARA
  * @author RUIZ GÓMEZ, SOLEDAD
- * 2º DGIIM - PDOO - Practice 1 DeepSpace
+ * 2º DGIIM - PDOO - Practice 2 DeepSpace
  */
 package deepspace;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * @brief 
  */
 public class Hangar {
+    
     private int maxElements;
     private ArrayList<ShieldBooster> shieldBoosters;
     private ArrayList<Weapon> weapons;
@@ -20,14 +21,19 @@ public class Hangar {
     * @brief Constructor
     */
     protected Hangar (int capacity){
-        throw new UnsupportedOperationException();
+        maxElements=capacity;
+        shieldBoosters= new ArrayList<>();
+        weapons= new ArrayList<>();
     }
     
     /**
     * @brief Copy constructor
     */
     protected Hangar (Hangar h){
-        throw new UnsupportedOperationException();
+        
+        maxElements = h.maxElements;
+        shieldBoosters = new ArrayList <ShieldBooster> (h.shieldBoosters);
+        weapons = new ArrayList <Weapon> (h.weapons);
     }
     
     /**
@@ -49,19 +55,31 @@ public class Hangar {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  adds w to the weapons array if there is enough room for it
+    * @param w weapon to add
+    * @return true if it has been added or false otherwise
     */
     boolean addWeapon (Weapon w){
-        
+        if(spaceAvailable()){
+            weapons.add(w);
+            return true;
+        }
+        else
+            return false;
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  adds s to the shieldBoosters array if there is enough room for it
+    * @param s shield booster to add
+    * @return true if it has been added or false otherwise
     */
     boolean addShieldBooster (ShieldBooster s){
-        
+        if(spaceAvailable()){
+            shieldBoosters.add(s);
+            return true;
+        }
+        else
+            return false;
     }
     
     /**
@@ -73,35 +91,54 @@ public class Hangar {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  Getter with package visibility
+    * @return shield booster objects array 
     */
-    ShieldBooster[] getShieldBoosters(){
-        
+    ArrayList<ShieldBooster> getShieldBoosters(){
+        return shieldBoosters;
     }
     
     /**
     * @brief  Getter with package visibility
-    * @return weapons objects
+    * @return weapons objects array
     */
-    Weapon[] getWeapons(){
+    ArrayList<Weapon> getWeapons(){
         return weapons;
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief Deletes the shield booster number s (if possible) and returns it. 
+    * In other case, it returns null.
+    * @param s The index of the shield booster to delete
+    * @return The deleted shield booster
     */
     ShieldBooster removeShieldBooster (int s){
+        
+        if (shieldBoosters.size() > s) {
+            ShieldBooster output = shieldBoosters.get(s);
+            shieldBoosters.remove(s);
+            return output;
+        } else {
+            return null;
+        }
         
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief Deletes the weapon number w (if possible) and returns it. In other 
+    * case, it returns null.
+    * @param w The index of the weapon to delete
+    * @return The deleted weapon
     */
     Weapon removeWeapon(int w){
         
+        if (weapons.size() > w) {
+            Weapon output = weapons.get(w);
+            weapons.remove(w);
+            return output;
+        } else {
+            return null;
+        }
     }
     
 }
