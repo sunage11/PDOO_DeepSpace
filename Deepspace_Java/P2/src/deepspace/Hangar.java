@@ -141,4 +141,17 @@ public class Hangar {
         }
     }
     
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "Hangar [ maxElements " + maxElements 
+                        + " ; shieldBoosters " + shieldBoosters.toString()
+                        + " ; weapons " + weapons.toString() + " ]";
+        
+        return output;
+    }
+    
 }

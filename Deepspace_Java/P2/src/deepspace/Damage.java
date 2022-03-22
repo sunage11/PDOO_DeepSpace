@@ -30,7 +30,7 @@ public class Damage {
     /**
     * @brief WeaponType constructor
     */
-    protected Damage (WeaponType[] w, int s) {
+    protected Damage (ArrayList<WeaponType> w, int s) {
         this.weapons=new ArrayList<WeaponType>(w);
         this.nShields = s;
         this.nWeapons = weapons.size();        
@@ -41,56 +41,101 @@ public class Damage {
     * @param d another Damage instance
     */
     protected Damage (Damage d) {
-              
+        this.nWeapons = d.nWeapons;
+        this.nShields = d.nShields;
+        this.weapons = new ArrayList<WeaponType>(d.weapons);         
     }
     
     /**
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    protected DamageToUI getUIVersion (Damage d) {
-              
+    protected DamageToUI getUIVersion () {
+        return new DamageToUI (this);
     }
     
     /**
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    private int arrayContainsType (Weapon[] w, WeaponType t) {
+    private int arrayContainsType (ArrayList <Weapon> w, WeaponType t) {
         
-              
+        
+        boolean cont=true;
+        int i;
+        
+        for(i=0; i<nWeapons && cont; i++){
+            if(t==w.get(i).getType())
+                cont=false;
+                
+        }
+        
+        if(cont==false)
+            return i;
+        else
+            return -1;
+            
     }
     
     /**
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    Damage adjust (Weapon[] w, ShieldBooster[] sb) {
-              
+    Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
+        
+        int shields = Integer.min(nShields, sb.size());
+        
+        if (weapons == null) {
+            Damage output = new Damage (Integer.min (nWeapons, w.size()), shields);
+            return output;
+        } // if we do not have weapons in the array
+        
+        ArrayList<Weapon> aux = new ArrayList <Weapon> (w);
+        ArrayList<WeaponType> aux2 = new ArrayList<> ();
+        int i;
+        
+        for (WeaponType element: weapons) {
+            i = arrayContainsType (aux, element);
+        // so we see the weapon types in the array
+        
+            if (i!=-1) { //if the type is found, we delete it
+                aux2.add(element);
+                aux.remove(i);
+            }
+        }
+        
+        Damage output = new Damage (aux2, shields);
+        return output;
+        
     }
     
     /**
-    * @brief builds a new DamageToUI object from *this
-    * @return DamageToUI
+    * @brief If *this has w.getType() in the array weapons, it deletes that element
+    * of the array. In other case, it decrements nWeapons in one unit
+    * @param w weapon which type is to be deleted
+    * @return void
     */
     void discardWeapon (Weapon w) {
-              
+        if (!weapons.remove(w.getType()))
+            if (nWeapons > 0)
+                nWeapons--;     
     }
     
     /**
-    * @brief builds a new DamageToUI object from *this
-    * @return DamageToUI
+    * @brief it decrements nShields in one unit
+    * @return void
     */
     void discardShieldBooster () {
-              
+        if (nShields > 0)
+            nShields--;
     }
     
     /**
-    * @brief builds a new DamageToUI object from *this
-    * @return DamageToUI
+    * @brief returns true if *this does not imply any accessory loss
+    * @return true if *this damage has no effect
     */
     boolean hasNoEffect () {
-              
+              // DUDA
     }
     
     /**
@@ -98,7 +143,7 @@ public class Damage {
     * @return DamageToUI
     */
     int getNShields () {
-              
+       return nShields;
     }
     
     /**
@@ -106,20 +151,29 @@ public class Damage {
     * @return DamageToUI
     */
     int getNWeapons () {
-              
+      return nWeapons;        
     }
     
     /**
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    WeaponType [] getWeapons() {
-              
+    ArrayList<WeaponType> getWeapons() {
+        return weapons;
     }
     
     
-    
-    
-    
-    
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "Damage [ nShields " + nShields 
+                        + " ; nWeapons " + nWeapons
+                        + " ; weapons " + weapons.toString() + " ]";
+        
+        return output;
+    }
+  
 }

@@ -13,6 +13,8 @@ require_relative 'WeaponType'
 module DeepSpace
     class Hangar
 
+        attr_reader :maxElements, :shieldBoosters, :weapons
+
         #Constructor
         def initialize(capacity)
             @maxElements=capacity
@@ -101,6 +103,14 @@ module DeepSpace
             else
                 return nil;
             end
+        end
+
+
+        #toString
+        def to_s
+            output = "Hangar [ maxElements #{@maxElements} ; " +
+                     "shieldBoosters #{@shieldBoosters.to_s} ; " +
+                     "weapons  #{@weapons.to_s} ]"
         end
      
 

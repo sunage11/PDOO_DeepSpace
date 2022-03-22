@@ -8,12 +8,25 @@
 def module
     class EnemyStarShip
        
+        attr_reader :name, :ammoPower, :shieldPower, :loot, :damage
+
         #Constructor 
         def initialize(n,a,s,l,d)
+            @name=n;
+            @ammoPower=a;
+            @shieldPower=s;
+            @loot=l;
+            @damage =  Damage.new(d);
+            @gameUniverse =  GameUniverse.new();
         end
 
         #Copy constructor 
         def self.newCopy(e)
+            @name=e.name;
+            @ammoPower=e.ammoPower;
+            @shieldPower= e.shieldPower;
+            @loot = e.loot;
+            @damage = Damage.new(e.damage);
         end
 
         #It builds a new HangarToUI object from *this
@@ -21,41 +34,24 @@ def module
             return EnemyStarShipToUI.new(self)
         end
 
-        #
+        # returns the shoot energy level of the enemy ship
         def fire
         end
 
-        #Get AmmoPower value
-        def getAmmoPower
-            @ammoPower
-        end
-
-        #Get Damage value
-        def getDamage
-            @Damage
-        end
-
-        #Get Loot object
-        def getLoot
-            @Loot 
-        end
-
-        #Get name value
-        def getName
-            @name 
-        end
-
-        #Get ShieldPower value
-        def getShieldPower
-            @ShieldPower
-        end
-
-        #
+        # returns the shield energy level of the enemy ship
         def protection
         end
 
-        #
-        def receive (shot)
+        # returns the result of a received shot with a specific power
+        # param shot power of the shot
+        # return the result of the shot
+
+        def receiveShot (shot)
+            if (shot > @shieldPower)
+                return ShotResult::DONOTRESIST
+            else
+                retunt ShotResult::RESIST 
+            end 
         end
 
         

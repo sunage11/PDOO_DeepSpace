@@ -21,14 +21,23 @@ public class EnemyStarShip {
     * @brief Constructor
     */
     protected EnemyStarShip (String n, float a, float s, Loot l, Damage d){
-        throw new UnsupportedOperationException();
+        name=n;
+        ammoPower=a;
+        shieldPower=s;
+        loot=l;
+        damage = new Damage(d);
+        gameUniverse = new GameUniverse();
     }
     
     /**
     * @brief Copy constructor
     */
     protected EnemyStarShip (EnemyStarShip e){
-        throw new UnsupportedOperationException();
+        name=e.name;
+        ammoPower=e.ammoPower;
+        shieldPower= e.shieldPower;
+        loot = e.loot;
+        damage = new Damage(e.damage);
     }
     
     /**
@@ -41,11 +50,11 @@ public class EnemyStarShip {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief returns the shoot energy level of the enemy ship
+    * @return ammoPower
     */
     float fire(){
-        throw new UnsupportedOperationException();
+        return ammoPower;
     }
     
     /**
@@ -89,19 +98,39 @@ public class EnemyStarShip {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  returns the shield energy level of the enemy ship
+    * @return shieldPower
     */
     float protection(){
-        throw new UnsupportedOperationException();
+        return shieldPower;
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  returns the result of a received shot with a specific power
+    * @param shot power of the shot
+    * @return the result of the shot
     */
-    ShotResult receive(float shot){
-        throw new UnsupportedOperationException();
+    ShotResult receiveShot (float shot){
+        if (shot > shieldPower)
+            return ShotResult.DONOTRESIST;
+        else 
+            return ShotResult.RESIST;
+    }
+    
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "EnemyStarShip [ name " + name 
+                        + " ; ammoPower " + ammoPower
+                        + " ; shieldPower " + shieldPower
+                        + " ; loot " + loot.toString()
+                        + " ; damage " + damage.toString() + " ]";
+        
+        return output;
+    
     }
     
     
