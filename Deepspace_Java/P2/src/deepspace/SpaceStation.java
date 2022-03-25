@@ -143,6 +143,7 @@ public class SpaceStation {
     float fire () {
         throw new UnsupportedOperationException();
     }
+
     
     /**
     * @brief Getter with package visibility
