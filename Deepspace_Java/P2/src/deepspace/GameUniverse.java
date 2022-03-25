@@ -23,15 +23,17 @@ public class GameUniverse {
     /**
     * @brief Constructor
     */
-    protected GameUniverse (){
-        throw new UnsupportedOperationException();
+    GameUniverse (){
+        gameState = new GameStateController();
+        turns = 0;
+        dice = new Dice();
     }
     
     /**
     * @brief  
     * @return 
     */
-    protected CombatResult combat(SpaceStation station, EnemyStarShip enemy){
+    CombatResult combat(SpaceStation station, EnemyStarShip enemy){
         throw new UnsupportedOperationException();
     }
     
@@ -44,73 +46,76 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief discards hangar of the current station if gameState is INIT or AFTERCOMBAT
     */
     void discardHangar(){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.discardHangar();
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief discards shield booster i of the current station if gameState is 
+    * INIT or AFTERCOMBAT
     */
     void discardShieldBooster(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.discardShieldBooster(i);
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief discards shield booster i of the current station's hangar if 
+    * gameState is INIT or AFTERCOMBAT
     */
     void discardShieldBoosterInHangar(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.discardShieldBoosterInHangar(i);
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief discards weapon i of the current station if gameState is INIT or AFTERCOMBAT
     */
     void discardWeapon(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.discardWeapon(i);
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief discards weapon i of the current station's hangar if 
+    * gameState is INIT or AFTERCOMBAT
     */
     void discardWeaponInHangar(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.discardWeaponInHangar(i);
     }
+
     
     /**
-    * @brief  
-    * @return 
+    * @brief  getter with package visibility
+    * @return gameState state
     */
     GameState getState(){
-        throw new UnsupportedOperationException();
+        return gameState.getState();
     }
     
     /**
-    * @brief builds a new GameUniverseToUI object from *this
+    * @brief builds a new GameUniverseToUI object from currentEnemy and currentStation
     * @return GameUniverseToUI
     */
     GameUniverseToUI getUIversion(){
-        return new GameUniverseToUI (this);
+        return new GameUniverseToUI (currentStation,currentEnemy);
     }
     
     /**
-    * @brief  It returns true if the current space station has the number of 
-    * medals needed to win.
-    * @return true when the number of medals is equal as the one required to 
-    * win, otherwise, it returns false
-    * 
+    * @brief  
+    * @return 
     */
     boolean haveAWinner(){
-        if(currentStation.getNMedals() == WIN)
-            return true;
-        else
-            return false;
+        throw new UnsupportedOperationException();
     }
     
     /**
@@ -122,25 +127,19 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  If the state of the game is INIT or AFTERCOMBAT the current space
-    * station call mountShieldBooster with the index passed as parameter.
-    * Otherwise, it has no effect.
-    * @return i index 
+    * @brief  
+    * @return 
     */
     void mountShieldBooster(int i){
-        if((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
-            currentStation.mountShieldBooster(i);
+        throw new UnsupportedOperationException();
     }
     
     /**
-    * @brief  If the state of the game is INIT or AFTERCOMBAT the current space
-    * station call mountWeapon with the index passed as parameter.
-    * Otherwise, it has no effect.
-    * @param i index
+    * @brief  
+    * @return 
     */
     void mountWeapon(int i){
-        if((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
-            currentStation.mountWeapon(i);
+        throw new UnsupportedOperationException();
     }
     
     /**
