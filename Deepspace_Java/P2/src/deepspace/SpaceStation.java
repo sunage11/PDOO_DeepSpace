@@ -243,11 +243,12 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief decrease in fuel units due to a displacement. The number of stored 
+    * units is subtracted a fraction that is equal to the speed of the station
+    * fuelUnits cannot be a negative 
     */
     void move () {
-        
+        fuelUnits -= getSpeed();
     }
     
     /**
