@@ -86,7 +86,7 @@ public class Damage {
     * @param sb ArrayList of shield boosters
     * @return modifies version of *this
     */
-    Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
+     Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
         
         int shields = Integer.min(nShields, sb.size());
 
@@ -97,19 +97,20 @@ public class Damage {
         // If it is specific damage
         } else {  
             ArrayList<WeaponType> aux = new ArrayList <> ();
-            ArrayList<Weapon> aux2 = new ArrayList <Weapon> (w);
+            ArrayList<Weapon> aux2 = new ArrayList <> (w);
             
             for (WeaponType element: weapons) { // going through *this
                 // checking if each type is contained in the param
-                if (arrayContainsType (w, element) != -1) 
+                int i = arrayContainsType (aux2, element);
+                if (i != -1) {
+                    aux2.remove(i);
                     aux.add(element);
+                }
             }
             
             Damage output = new Damage (aux, shields);
             return output;
         }
-        
-        
         
     }
     
