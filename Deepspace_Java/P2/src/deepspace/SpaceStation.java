@@ -255,23 +255,30 @@ public class SpaceStation {
     * @return WeaponToUI
     */
     float protection () {
-        
+        throw new UnsupportedOperationException();
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief if *this has not hangar, param h is the new hangar. If *this already 
+    * has hangar, this method does not operate
+    * @param h hangar to clone
     */
     void receiveHagar (Hangar h) {
-        
+        if (hangar == null)
+            hangar = new Hangar(h);
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief if *this has not hangar, returns false. Otherwise, it returns the 
+    * result of trying to add the shield booster s to the hangar
+    * @param s shield booster to add
+    * @return true if added, false otherwise
     */
     boolean receiveShieldBooster (ShieldBooster s) {
-        
+        if (hangar == null)
+            return false;
+        else
+            return hangar.addShieldBooster(s);
     }
     
     /**
@@ -279,23 +286,30 @@ public class SpaceStation {
     * @return WeaponToUI
     */
     ShotResult receiveShot (float shot) {
-        
+        throw new UnsupportedOperationException();
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief increments ammoPower, shieldPower and fuelUnits 
+    * @param s supplies package 
     */
     void receiveSupplies (SuppliesPackage s) {
-        
+        ammoPower += s.getAmmoPower();
+        shieldPower += s.getShieldPower();
+        fuelUnits += s.getFuelUnits();
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief if *this has not hangar, returns false. Otherwise, it returns the 
+    * result of trying to add the weapon w to the hangar
+    * @param w weapon to add
+    * @return true if added, false otherwise
     */
     boolean receiveWeapon (Weapon w) {
-        
+        if (hangar == null)
+            return false;
+        else
+            return hangar.addWeapon(w);
     }
     
     /**
@@ -303,16 +317,16 @@ public class SpaceStation {
     * @return WeaponToUI
     */
     void setLoot (Loot loot) {
-        
+        throw new UnsupportedOperationException();
     }
     
     /**
     * @brief calculates the adjusted damage from param d to the weapon and shield
     * collections in *this and then saves it in pendingDamage
-    * @return WeaponToUI
+    * @param d Damage to adjust
     */
     void setPendingDamage (Damage d) {
-        pendingDamage = d.adjust(weapons, shieldBoosters)
+        pendingDamage = d.adjust(weapons, shieldBoosters);
     }
     
     /**
@@ -323,11 +337,7 @@ public class SpaceStation {
     boolean validState () {
         return ((pendingDamage == null) || (pendingDamage.hasNoEffect()));
     }
-    
-    
-    
-    
-    
-    
+
+  
     
 }
