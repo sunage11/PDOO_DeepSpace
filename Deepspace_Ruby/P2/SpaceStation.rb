@@ -15,10 +15,19 @@ module DeepSpace
         @@SHIELDLOSSPERUNITSHOT = 0.1
         
         # Constructores HACER
-        def initialize (w, s)
-            @nShields = s 
-            @nWeapons = w
-            @weapons=Array.new()
+        def initialize (n, s)
+            @ammoPower = s.ammoPower
+            @fuelUnits = s.fuelUnits
+            @shieldPower = s.shieldPower
+            @name = n 
+            @nMedals = 0
+            @pendingDamage = nil
+            @hangar = nil
+            @weapons = Array.new
+            @shieldBoosters = Array.new 
+
+
+
         end
 
         # otro

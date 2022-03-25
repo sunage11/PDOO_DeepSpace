@@ -144,13 +144,6 @@ public class SpaceStation {
         //Se hace en la práctica 3
     }
     
-    /**
-    * @brief Copy constructor
-    * @param d another Damage instance
-    */
-    void discardWeaponInHangar (int i) {
-        
-    }
     
     /**
     * @brief Getter with package visibility
