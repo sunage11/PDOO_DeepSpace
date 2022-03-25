@@ -5,6 +5,7 @@
  */
 package deepspace;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @title Damage
@@ -60,20 +61,20 @@ public class Damage {
     */
     private int arrayContainsType (ArrayList <Weapon> w, WeaponType t) {
         
+        Iterator<Weapon> it =w.iterator();
+        int pos=0;
         
-        boolean cont=true;
-        int i;
-        
-        for(i=0; i<nWeapons && cont; i++){
-            if(t==w.get(i).getType())
-                cont=false;
-                
+        while(it.hasNext()){
+            Weapon aux = it.next();
+            
+            if(aux.getType() == t)
+                return pos;
+            else
+                pos++;
         }
         
-        if(cont==false)
-            return i;
-        else
-            return -1;
+        return -1;
+            
             
     }
     

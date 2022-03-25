@@ -5,14 +5,18 @@
  */
 package deepspace;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sunage
  */
 public class SpaceStation {
     
-    private final int MAXFUEL = 100;
-    private final int SHIELDLOSSPERUNITSHOT = 100;
+    private final int MAXFUEL = 100; //Shield units that are lost for each 
+    //unit of firing power received.
+    private final int SHIELDLOSSPERUNITSHOT = 100; //Greatest number of fuel 
+    //units that a space station can have.
     
     private float ammoPower;
     private float fuelUnits;
@@ -20,30 +24,46 @@ public class SpaceStation {
     private int nMedals;
     private float shieldPower;
     private Damage pendingDamage;
+    private ArrayList<Weapon> weapons;
+    private ArrayList<ShieldBooster> shieldBoosters;
+    private Hangar hangar;
     
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Set the amount of fuel to the value passed without ever 
+    * exceeding the limit.
+    * @param f value 
     */
     void assignFuelValue (float f) {
-        
+        if (f<=MAXFUEL)
+            fuelUnits = f;
+        else
+            fuelUnits = MAXFUEL;
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Set pending damage to null if it has no effect.
     */
     void cleanPendingDamage () {
-        
+        if(pendingDamage.hasNoEffect())
+            pendingDamage = null;
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Constructor
+    * @param n name
+    * @param supplies a instance os SuppliesPackage
     */
     protected SpaceStation (String n, SuppliesPackage supplies) {
-        
+        ammoPower = supplies.getAmmoPower();
+        fuelUnits = supplies.getFuelUnits();
+        shieldPower = supplies.getShieldPower();
+        name = n;
+        nMedals = 0;
+        pendingDamage= null;
+        hangar = null;
+        weapons = new ArrayList<>();
+        shieldBoosters = new ArrayList<>();
     }
     
     /**
@@ -111,39 +131,39 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Getter with package visibility
+    * @return ammoPower value
     */
     float getAmmoPower () {
-        
+        return (ammoPower);
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Getter with package visibility
+    * @return fuelUnits value
     */
     float getFuelUnits () {
-        
+        return (fuelUnits);
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Getter with package visibility
+    * @return hangar instance
     */
     Hangar getHangar () {
-        
+        return (hangar);
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief Getter with package visibility
+    * @return name value
     */
     String getName () {
-        
+        return (name);
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     int getNMedals () {
@@ -151,7 +171,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     Damage getPendingDamage () {
@@ -159,7 +179,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     ShieldBooster[] getShieldBooster () {
@@ -167,7 +187,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     float getShieldPower () {
@@ -175,7 +195,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     float getPower () {
@@ -183,7 +203,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
+    * @brief Getter with package visibility
     * @param d another Damage instance
     */
     float getSpeed () {

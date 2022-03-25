@@ -35,20 +35,18 @@ module DeepSpace
         end
 
         def arrayContainsType (w, t)
-            cont=true
-            i=0
+            
+            pos=0;
 
-            while (i<@nWeapons && cont)
-                if(t == w.get(i).getType)
-                    cont=false
+            w.each do |aux|
+                if(aux.type == t)
+                    return pos
+                else
+                    pos+=1
                 end
             end
 
-            if(cont == false)
-                return if
-            else
-                return -1
-            end
+            return -1
 
         end
 
