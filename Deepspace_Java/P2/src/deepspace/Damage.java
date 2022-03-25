@@ -20,21 +20,21 @@ public class Damage {
     
     
     /**
-    * @brief nWeapons constructor
+    * @brief nWeapons constructor -> numeric damage
     */
     protected Damage (int w, int s) {
         this.nWeapons = w;
         this.nShields = s;
-        this.weapons=new ArrayList<>(); 
+        this.weapons = new ArrayList<>(); 
     }
     
     /**
-    * @brief WeaponType constructor
+    * @brief WeaponType constructor -> specific damage
     */
     protected Damage (ArrayList<WeaponType> w, int s) {
-        this.weapons=new ArrayList<WeaponType>(w);
+        this.weapons = new ArrayList<WeaponType>(w);
         this.nShields = s;
-        this.nWeapons = weapons.size();        
+        this.nWeapons = -1;        
     }
     
     /**
@@ -79,34 +79,37 @@ public class Damage {
     }
     
     /**
-    * @brief builds a new DamageToUI object from *this
-    * @return DamageToUI
+    * @brief returns a an adjusted version of *this. It takes into consideration
+    * the parameters w ans sb in order to modify the output value so it does not
+    * imply losing weapons or shields that are nos specified in w or sb
+    * @param w ArrayList of weapons
+    * @param sb ArrayList of shield boosters
+    * @return modifies version of *this
     */
     Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
         
         int shields = Integer.min(nShields, sb.size());
-        
-        if (weapons == null) {
+
+        // If it is numeric damage
+        if (nWeapons != -1) {
             Damage output = new Damage (Integer.min (nWeapons, w.size()), shields);
             return output;
-        } // if we do not have weapons in the array
-        
-        ArrayList<Weapon> aux = new ArrayList <Weapon> (w);
-        ArrayList<WeaponType> aux2 = new ArrayList<> ();
-        int i;
-        
-        for (WeaponType element: weapons) {
-            i = arrayContainsType (aux, element);
-        // so we see the weapon types in the array
-        
-            if (i!=-1) { //if the type is found, we delete it
-                aux2.add(element);
-                aux.remove(i);
+        // If it is specific damage
+        } else {  
+            ArrayList<WeaponType> aux = new ArrayList <> ();
+            ArrayList<Weapon> aux2 = new ArrayList <Weapon> (w);
+            
+            for (WeaponType element: weapons) { // going through *this
+                // checking if each type is contained in the param
+                if (arrayContainsType (w, element) != -1) 
+                    aux.add(element);
             }
+            
+            Damage output = new Damage (aux, shields);
+            return output;
         }
         
-        Damage output = new Damage (aux2, shields);
-        return output;
+        
         
     }
     
@@ -136,7 +139,7 @@ public class Damage {
     * @return true if *this damage has no effect
     */
     boolean hasNoEffect () {
-              // DUDA
+        return ((nWeapons==0) && (nShields==0) && (weapons.isEmpty()));
     }
     
     /**
