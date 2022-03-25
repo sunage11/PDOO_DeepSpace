@@ -18,6 +18,7 @@ public class GameUniverse {
     private SpaceStation currentStation;
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
+    private GameStateController gameState;
     
     /**
     * @brief Constructor
@@ -99,11 +100,17 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  It returns true if the current space station has the number of 
+    * medals needed to win.
+    * @return true when the number of medals is equal as the one required to 
+    * win, otherwise, it returns false
+    * 
     */
     boolean haveAWinner(){
-        throw new UnsupportedOperationException();
+        if(currentStation.getNMedals() == WIN)
+            return true;
+        else
+            return false;
     }
     
     /**
@@ -115,19 +122,25 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  If the state of the game is INIT or AFTERCOMBAT the current space
+    * station call mountShieldBooster with the index passed as parameter.
+    * Otherwise, it has no effect.
+    * @return i index 
     */
     void mountShieldBooster(int i){
-        throw new UnsupportedOperationException();
+        if((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+            currentStation.mountShieldBooster(i);
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  If the state of the game is INIT or AFTERCOMBAT the current space
+    * station call mountWeapon with the index passed as parameter.
+    * Otherwise, it has no effect.
+    * @param i index
     */
     void mountWeapon(int i){
-        throw new UnsupportedOperationException();
+        if((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+            currentStation.mountWeapon(i);
     }
     
     /**
