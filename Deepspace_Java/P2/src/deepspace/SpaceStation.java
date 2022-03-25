@@ -31,6 +31,23 @@ public class SpaceStation {
     
     
     /**
+    * @brief Constructor
+    * @param n name
+    * @param supplies a instance os SuppliesPackage
+    */
+    protected SpaceStation (String n, SuppliesPackage supplies) {
+        ammoPower = supplies.getAmmoPower();
+        fuelUnits = supplies.getFuelUnits();
+        shieldPower = supplies.getShieldPower();
+        name = n;
+        nMedals = 0;
+        pendingDamage= null;
+        hangar = null;
+        weapons = new ArrayList<>();
+        shieldBoosters = new ArrayList<>();
+    }
+    
+    /**
     * @brief Set the amount of fuel to the value passed without ever 
     * exceeding the limit.
     * @param f value 
@@ -48,23 +65,6 @@ public class SpaceStation {
     void cleanPendingDamage () {
         if(pendingDamage.hasNoEffect())
             pendingDamage = null;
-    }
-    
-    /**
-    * @brief Constructor
-    * @param n name
-    * @param supplies a instance os SuppliesPackage
-    */
-    protected SpaceStation (String n, SuppliesPackage supplies) {
-        ammoPower = supplies.getAmmoPower();
-        fuelUnits = supplies.getFuelUnits();
-        shieldPower = supplies.getShieldPower();
-        name = n;
-        nMedals = 0;
-        pendingDamage= null;
-        hangar = null;
-        weapons = new ArrayList<>();
-        shieldBoosters = new ArrayList<>();
     }
     
     /**
@@ -104,7 +104,7 @@ public class SpaceStation {
     * @param 
     */
     void discardShieldBooster (int i) {
-        //Se hace en la práctica 3
+        throw new UnsupportedOperationException();
     }
     
     /**
@@ -122,7 +122,7 @@ public class SpaceStation {
     * @param d another Damage instance
     */
     void discardWeapon (int i) {
-        //Se hace en la práctica 3
+        throw new UnsupportedOperationException();
     }
     
     /**
@@ -141,9 +141,8 @@ public class SpaceStation {
     * @param d another Damage instance
     */
     float fire () {
-        //Se hace en la práctica 3
+        throw new UnsupportedOperationException();
     }
-    
     
     /**
     * @brief Getter with package visibility
@@ -235,16 +234,19 @@ public class SpaceStation {
     }
     
     /**
-    * @brief It trys to mount the booster with the index i inside the hangar. If 
+    * @brief It tries to mount the booster with the index i inside the hangar. If 
     * a hangar is available, it removes the booster located in that position 
     * and if this operation is successful, it is added to the collection of
     * boosters in use.
     * @param i index
     */
     void mountShieldBooster (int i) {
-        ShieldBooster aux;
-        aux = hangar.removeShieldBooster(i);
-        shieldBoosters.add(aux);
+        if (hangar != null) {
+            ShieldBooster aux;
+            aux = hangar.removeShieldBooster(i);
+            if (aux != null)
+                shieldBoosters.add(aux);
+        }
     }
     
     /**
@@ -255,17 +257,21 @@ public class SpaceStation {
     * @param i index
     */
     void mountWeapon (int i) {
-        Weapon aux;
-        aux = hangar.removeWeapon(i);
-        weapons.add(aux);
+        if (hangar != null) {
+            Weapon aux;
+            aux = hangar.removeWeapon(i);
+            if (aux != null) 
+                weapons.add(aux);
+        }
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief decrease in fuel units due to a displacement. The number of stored 
+    * units is subtracted a fraction that is equal to the speed of the station
+    * fuelUnits cannot be a negative 
     */
     void move () {
-        
+        fuelUnits -= getSpeed();
     }
     
     /**
