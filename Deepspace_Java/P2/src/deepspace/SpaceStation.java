@@ -307,19 +307,21 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
+    * @brief calculates the adjusted damage from param d to the weapon and shield
+    * collections in *this and then saves it in pendingDamage
     * @return WeaponToUI
     */
     void setPendingDamage (Damage d) {
-        
+        pendingDamage = d.adjust(weapons, shieldBoosters)
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief returns true if *this is in a valid state (this implies not to have
+    * any pendingDamage at all or with any effect
+    * @return true if *this is in a valid state, false otherwise
     */
     boolean validState () {
-        
+        return ((pendingDamage == null) || (pendingDamage.hasNoEffect()));
     }
     
     
