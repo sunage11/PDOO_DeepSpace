@@ -76,7 +76,7 @@ public class Weapon {
     * @brief builds a new WeaponToUI object from *this
     * @return WeaponToUI
     */
-    protected WeaponToUI getUIVersion () { //DUDAAAA protected
+    protected WeaponToUI getUIversion () { //DUDAAAA protected
         
         return new WeaponToUI (this);
     }

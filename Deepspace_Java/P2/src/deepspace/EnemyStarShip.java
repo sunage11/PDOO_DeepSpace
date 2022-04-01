@@ -44,7 +44,7 @@ public class EnemyStarShip{
     * @brief builds a new WeaponToUI object from *this
     * @return EnemyToUI
     */
-    protected EnemyToUI getUIVersion () { //DUDAAAA protected
+    EnemyToUI getUIversion () { 
         
         return new EnemyToUI (this);
     }

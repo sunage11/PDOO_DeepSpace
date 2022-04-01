@@ -117,7 +117,7 @@ public class TestP2 {
         System.out.println(space.getNMedals());
         System.out.println(space.getPendingDamage());
         System.out.println(space.getWeapons());
-        System.out.println(space.getShieldBooster());
+        System.out.println(space.getShieldBoosters());
         System.out.println(space.getHangar());
         System.out.println(space.toString());
         Hangar hangar4 = new Hangar(4);
@@ -135,7 +135,7 @@ public class TestP2 {
         space.mountShieldBooster(0);
         space.mountWeapon(0);
         System.out.println(space.getHangar());
-        System.out.println(space.getShieldBooster());
+        System.out.println(space.getShieldBoosters());
         System.out.println(space.getWeapons());
         space.discardHangar();
         System.out.println(space.getHangar());

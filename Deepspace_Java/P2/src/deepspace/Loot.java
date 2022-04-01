@@ -84,7 +84,7 @@ public class Loot {
     * @brief builds a new LootToUI object from *this
     * @return LootToUI
     */
-    protected LootToUI getUIVersion(){ //DUDAAAA protected
+    LootToUI getUIversion(){ //DUDAAAA protected
         return(new LootToUI(this));
     }
     
