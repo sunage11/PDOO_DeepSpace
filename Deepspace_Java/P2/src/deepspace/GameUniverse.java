@@ -115,7 +115,10 @@ public class GameUniverse {
     * @return 
     */
     boolean haveAWinner(){
-        throw new UnsupportedOperationException();
+        if(currentStation.getNMedals() == WIN)
+            return true;
+        else
+            return false;
     }
     
     /**
@@ -131,7 +134,9 @@ public class GameUniverse {
     * @return 
     */
     void mountShieldBooster(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.mountShieldBooster(i);
     }
     
     /**
@@ -139,7 +144,9 @@ public class GameUniverse {
     * @return 
     */
     void mountWeapon(int i){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.AFTERCOMBAT || 
+                gameState.getState() == GameState.INIT)
+            currentStation.mountWeapon(i);
     }
     
     /**
