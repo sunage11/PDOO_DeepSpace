@@ -18,6 +18,15 @@ module DeepSpace
                 @nMedals    = m 
             end
 
+            #Copy constructor 
+            def self.newCopy (e)
+                @nSupplies  = e.nSupplies
+                @nWeapons   = e.nWeapons
+                @nShields   = e.nShields
+                @nHangars   = e.nHangars
+                @nMedals    = e.nMedals 
+            end
+            
             # Getters
             def nSupplies
                 @nSupplies

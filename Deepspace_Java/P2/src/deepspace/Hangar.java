@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @title Hangar
  * @brief 
  */
-public class Hangar {
+public class Hangar{
     
     private int maxElements;
     private ArrayList<ShieldBooster> shieldBoosters;

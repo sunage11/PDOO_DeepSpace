@@ -29,6 +29,17 @@ public class Loot {
         this.nMedals   = m;
     }
     
+     /**
+    * @brief Copy constructor
+    */
+    Loot (Loot e){
+        this.nSupplies = e.getNSupplies();
+        this.nWeapons  = e.getNWeapons();
+        this.nShields  = e.getNShields();
+        this.nHangars  = e.getNHangars();
+        this.nMedals   = e.getNMedals();
+    }
+    
     /**
     * @brief Getter with package visibility
     * @return nSupplies value

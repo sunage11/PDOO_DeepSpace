@@ -23,7 +23,7 @@ module DeepSpace
         end
         
         #Se hace en la práctica 3
-        def combat (station, enemy)
+        def combatGo (station, enemy) #Dos métodos en Ruby no pueden tener el mismo nombre 
         end
 
         #Se hace en la práctica 3
@@ -74,6 +74,8 @@ module DeepSpace
             GameUniverseToUI.new(self)
         end
 
+        #It returns true if the current space station has the number of 
+        #medals needed to win.
         def haveAWinner
             if (currentStation.nMedals == WIN)
                 return true
@@ -86,6 +88,8 @@ module DeepSpace
             # P3
         end
 
+        #If the game state is INIT or AFTERCOMBAT, the  current space 
+        #station calls its own method mountShieldBooster. Otherwise, it has no effect.
         def mountShieldBooster (i)
             if (@gameState.state == GameState::AFTERCOMBAT || 
                 @gameState.state == GameState::INIT)
@@ -93,6 +97,8 @@ module DeepSpace
             end
         end
 
+        #If the game state is INIT or AFTERCOMBAT, the  current space 
+        # station calls its own method mountWeapon. Otherwise, it has no effect.
         def mountWeapon (i)
             if (@gameState.state == GameState::AFTERCOMBAT || 
                 @gameState.state == GameState::INIT)

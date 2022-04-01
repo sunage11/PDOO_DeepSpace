@@ -9,7 +9,7 @@ package deepspace;
  * @title Hangar
  * @brief 
  */
-public class EnemyStarShip {
+public class EnemyStarShip{
     private float ammoPower;
     private String name;
     private float shieldPower;
