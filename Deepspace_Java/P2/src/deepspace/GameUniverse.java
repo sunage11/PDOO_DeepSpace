@@ -30,7 +30,6 @@ public class GameUniverse {
         currentStation = null;
         spaceStations = new ArrayList<>();
         currentEnemy = null;
-        gameState = new GameStateController();
 
     }
     
@@ -164,6 +163,30 @@ public class GameUniverse {
         throw new UnsupportedOperationException();
     }
     
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "GameUniverse [ gameState " + gameState 
+                        + " ; turns " + turns 
+                        + " ; dice " + dice.toString()
+                        + " ; currentStation " + currentStation.toString()
+                        + " ; spaceStations " + spaceStations.toString()
+                        + " ; currentEnemy " + currentEnemy.toString() + " ]";
+        
+        return output;
+    }
+    
+        gameState = new GameStateController();
+        turns = 0;
+        dice = new Dice();
+        currentStation = null;
+        spaceStations = new ArrayList<>();
+        currentEnemy = null;
+        gameState = new GameStateController();
+
  
     
 }
