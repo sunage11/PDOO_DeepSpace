@@ -27,10 +27,14 @@ public class GameUniverse {
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
+<<<<<<< HEAD
         currentStation = null;
         spaceStations = new ArrayList<>();
         currentEnemy = null;
         gameState = new GameStateController();
+=======
+        
+>>>>>>> 55b36be8ba4d9e2526b29364284aef5ad06805c5
     }
     
     /**
@@ -50,7 +54,8 @@ public class GameUniverse {
     }
     
     /**
-    * @brief discards hangar of the current station if gameState is INIT or AFTERCOMBAT
+    * @brief discards hangar of the current station if gameState is INIT or 
+    * AFTERCOMBAT
     */
     void discardHangar(){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
@@ -115,8 +120,14 @@ public class GameUniverse {
     }
     
     /**
+<<<<<<< HEAD
     * @brief 
     * @return 
+=======
+    * @brief  It returns true if the current space station has the number of 
+    * medals needed to win.
+    * @return true if medals is equal to WIN. Otherwise, it is false.
+>>>>>>> 55b36be8ba4d9e2526b29364284aef5ad06805c5
     */
     boolean haveAWinner(){
         if(currentStation.getNMedals() == WIN)
@@ -134,8 +145,8 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief If the game state is INIT or AFTERCOMBAT, the  current space 
+    * station calls its own method mountShieldBooster. Otherwise, it has no effect.
     */
     void mountShieldBooster(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
@@ -144,8 +155,8 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief  If the game state is INIT or AFTERCOMBAT, the  current space 
+    * station calls its own method mountWeapon. Otherwise, it has no effect.
     */
     void mountWeapon(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
