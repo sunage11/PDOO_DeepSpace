@@ -164,7 +164,8 @@ public class Damage {
     * @return DamageToUI
     */
     ArrayList<WeaponType> getWeapons() {
-        return weapons;
+        ArrayList<WeaponType> output = new ArrayList<>(weapons);
+        return output;
     }
     
     

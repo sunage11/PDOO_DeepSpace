@@ -59,7 +59,36 @@ module DeepSpace
         # returns a an adjusted version of *this. It takes into consideration
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
-        def adjuste (w, s)
+        def adjust (w, s)
+            shields = [@nShields, s.lenght].min 
+
+            # If it is numeric damage
+            if (@nWeapons != -1)
+                output = Damage.new([@nWeapons, w.lenght].min, shields)
+                return output
+            else
+                aux = []
+                aux2 = w.clone
+
+                weapons.each do |element|
+                    i = arrayContainsType (aux2, element)
+                    if (i != -1)
+                        aux2.delete_at(i)
+                        aux << element
+                    end
+                end
+                output = Damage.new(aux, shields)
+                return output
+            end
+        end
+
+
+
+
+
+
+
+
         end
 
         # If *this has w.getType() in the array weapons, it deletes that element

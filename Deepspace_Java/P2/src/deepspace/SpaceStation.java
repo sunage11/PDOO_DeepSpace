@@ -166,7 +166,8 @@ public class SpaceStation {
     * @return Hangar instance
     */
     Hangar getHangar () {
-        return (hangar);
+        Hangar output = new Hangar (hangar);
+        return output;
     }
     
     /**
@@ -190,7 +191,8 @@ public class SpaceStation {
     * @return pendingDamage instance
     */
     Damage getPendingDamage () {
-        return (pendingDamage);
+        Damage output = new Damage (pendingDamage);
+        return output;
     }
     
     /**
@@ -198,7 +200,8 @@ public class SpaceStation {
     * @return collection of ShieldBoosters
     */
     ArrayList<ShieldBooster> getShieldBooster () {
-        return(shieldBoosters);
+        ArrayList<ShieldBooster> output = new ArrayList<>(shieldBoosters);
+        return output;
     }
     
     /**
@@ -362,7 +365,5 @@ public class SpaceStation {
     boolean validState () {
         return ((pendingDamage == null) || (pendingDamage.hasNoEffect()));
     }
-
-  
-    
+ 
 }

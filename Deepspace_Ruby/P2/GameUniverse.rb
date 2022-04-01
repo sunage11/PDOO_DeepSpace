@@ -20,6 +20,11 @@ module DeepSpace
             @gameState= GameStateController.new()
             @turns = 0
             @dice = Dice.new()
+            @currentStation = nil
+            @spaceStations = Array.new
+            @currentEnemy = nil
+            @gameState = GameStateController.new
+
         end
         
         #Se hace en la práctica 3

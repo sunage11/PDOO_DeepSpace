@@ -27,14 +27,11 @@ public class GameUniverse {
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
-<<<<<<< HEAD
         currentStation = null;
         spaceStations = new ArrayList<>();
         currentEnemy = null;
         gameState = new GameStateController();
-=======
-        
->>>>>>> 55b36be8ba4d9e2526b29364284aef5ad06805c5
+
     }
     
     /**
@@ -120,14 +117,9 @@ public class GameUniverse {
     }
     
     /**
-<<<<<<< HEAD
-    * @brief 
-    * @return 
-=======
     * @brief  It returns true if the current space station has the number of 
     * medals needed to win.
     * @return true if medals is equal to WIN. Otherwise, it is false.
->>>>>>> 55b36be8ba4d9e2526b29364284aef5ad06805c5
     */
     boolean haveAWinner(){
         if(currentStation.getNMedals() == WIN)
