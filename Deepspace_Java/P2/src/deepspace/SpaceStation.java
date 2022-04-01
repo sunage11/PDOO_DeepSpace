@@ -199,7 +199,7 @@ public class SpaceStation {
     * @brief Getter with package visibility
     * @return collection of ShieldBoosters
     */
-    ArrayList<ShieldBooster> getShieldBooster () {
+    ArrayList<ShieldBooster> getShieldBoosters () {
         ArrayList<ShieldBooster> output = new ArrayList<>(shieldBoosters);
         return output;
     }

@@ -68,7 +68,7 @@ public class ShieldBooster {
     * @brief builds a new WeaponToUI object from *this
     * @return WeaponToUI
     */
-    protected ShieldToUI getUIVersion(){ //DUDAAAA protected
+    protected ShieldToUI getUIversion(){ //DUDAAAA protected
         return(new ShieldToUI(this));
     }
     

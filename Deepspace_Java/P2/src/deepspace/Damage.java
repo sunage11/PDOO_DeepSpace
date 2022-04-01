@@ -51,7 +51,7 @@ public class Damage {
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    protected DamageToUI getUIVersion () {
+    protected DamageToUI getUIversion () {
         return new DamageToUI (this);
     }
     
