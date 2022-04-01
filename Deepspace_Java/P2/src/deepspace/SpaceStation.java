@@ -291,7 +291,7 @@ public class SpaceStation {
     * has hangar, this method does not operate
     * @param h hangar to clone
     */
-    void receiveHagar (Hangar h) {
+    void receiveHangar (Hangar h) {
         if (hangar == null)
             hangar = new Hangar(h);
     }
