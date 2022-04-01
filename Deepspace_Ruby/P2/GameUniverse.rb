@@ -34,6 +34,10 @@ module DeepSpace
         end
 
         def discardWeaponInHangar (i)
+            if (@gameState.state == GameState::AFTERCOMBAT || 
+                @gameState.state == GameState::INIT)
+                currentStation.discardWeaponInHangar(i)
+            end  
         end
 
         # builds a new GameUniverseToUI object from self
@@ -42,18 +46,33 @@ module DeepSpace
         end
 
         def haveAWinner
+            if (currentStation.nMedals == WIN)
+                return true
+            else
+                return false
+            end
         end
 
-        def ini (names)
+        def init (names)
+            # P3
         end
 
         def mountShieldBooster (i)
+            if (@gameState.state == GameState::AFTERCOMBAT || 
+                @gameState.state == GameState::INIT)
+                currentStation.mountShieldBooster(i)
+            end
         end
 
         def mountWeapon (i)
+            if (@gameState.state == GameState::AFTERCOMBAT || 
+                @gameState.state == GameState::INIT)
+                currentStation.mountWeapon(i)
+            end        
         end
 
         def nextTurn 
+            #Siguiente practica
         end
 
     end

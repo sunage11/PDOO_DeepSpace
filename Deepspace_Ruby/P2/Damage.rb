@@ -17,6 +17,7 @@ module DeepSpace
             @nShields = s 
             @nWeapons = w
             @weapons=Array.new()
+            @weapons=nil
         end
 
         # WeaponType constructor -> specific damage 

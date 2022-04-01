@@ -1,13 +1,13 @@
 /**
  * @author BOLÍVAR PELÁEZ, CLARA
  * @author RUIZ GÓMEZ, SOLEDAD
- * 2º DGIIM - PDOO - Practice 1 DeepSpace
+ * 2º DGIIM - PDOO - Practice 2 DeepSpace
  */
 package deepspace;
 import java.util.ArrayList;
 
 /**
- * @title Hangar
+ * @title GameUniverse
  * @brief 
  */
 public class GameUniverse {
@@ -27,6 +27,10 @@ public class GameUniverse {
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
+        currentStation = null;
+        spaceStations = new ArrayList<>();
+        currentEnemy = null;
+        gameState = new GameStateController();
     }
     
     /**
@@ -111,7 +115,7 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
+    * @brief 
     * @return 
     */
     boolean haveAWinner(){
