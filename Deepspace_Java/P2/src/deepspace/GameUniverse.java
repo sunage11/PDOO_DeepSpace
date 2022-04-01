@@ -178,15 +178,6 @@ public class GameUniverse {
         
         return output;
     }
-    
-        gameState = new GameStateController();
-        turns = 0;
-        dice = new Dice();
-        currentStation = null;
-        spaceStations = new ArrayList<>();
-        currentEnemy = null;
-        gameState = new GameStateController();
-
  
     
 }
