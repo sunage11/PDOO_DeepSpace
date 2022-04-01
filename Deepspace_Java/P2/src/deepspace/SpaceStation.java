@@ -365,5 +365,22 @@ public class SpaceStation {
     boolean validState () {
         return ((pendingDamage == null) || (pendingDamage.hasNoEffect()));
     }
+    
+    /**
+    * @brief toString
+    * @return String with info about the instance
+    */
+    public String toString () {
+        
+        String output = "SpaceStation [ MAXFUEL " + MAXFUEL 
+                        + " ; SHIELDLOSSPERUNITSHOT " + SHIELDLOSSPERUNITSHOT 
+                        + " ; ammoPower " + ammoPower +" ; fuelUnits " + fuelUnits 
+                            +" ; name " + name +" ; nMedals "+ nMedals +" ; shieldPower "+
+                                shieldPower + " ; pendingDamage "+ pendingDamage.toString()+
+                            " ; weapons " + weapons.toString() + " ; shieldBoosters " + 
+                            shieldBoosters.toString() + " ; hangar " + hangar.toString() + " ]";
+        
+        return output;
+    }
  
 }
