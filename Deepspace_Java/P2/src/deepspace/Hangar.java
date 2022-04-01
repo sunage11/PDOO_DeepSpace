@@ -95,7 +95,8 @@ public class Hangar{
     * @return shield booster objects array 
     */
     ArrayList<ShieldBooster> getShieldBoosters(){
-        return shieldBoosters;
+        ArrayList<ShieldBooster> output = new ArrayList<>(shieldBoosters);
+        return output;
     }
     
     /**
@@ -103,7 +104,8 @@ public class Hangar{
     * @return weapons objects array
     */
     ArrayList<Weapon> getWeapons(){
-        return weapons;
+        ArrayList<Weapon> output = new ArrayList<>(weapons);
+        return output;
     }
     
     /**

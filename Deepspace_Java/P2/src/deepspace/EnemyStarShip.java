@@ -70,7 +70,8 @@ public class EnemyStarShip{
     * @return damage value
     */
     Damage getDamage(){
-      return damage;
+        Damage output = new Damage (damage);
+        return output;
     }
     
     /**
@@ -78,7 +79,9 @@ public class EnemyStarShip{
     * @return loot object
     */
     Loot getLoot(){
-        return loot;
+       // Loot output = new Loot (loot);
+       // return output;
+       return loot;
     }
     
     /**
