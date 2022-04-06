@@ -22,7 +22,7 @@ public class Damage {
     /**
     * @brief nWeapons constructor -> numeric damage
     */
-    protected Damage (int w, int s) {
+    Damage (int w, int s) {
         this.nWeapons = w;
         this.nShields = s;
         this.weapons = new ArrayList<>(); 
@@ -31,7 +31,7 @@ public class Damage {
     /**
     * @brief WeaponType constructor -> specific damage
     */
-    protected Damage (ArrayList<WeaponType> w, int s) {
+    Damage (ArrayList<WeaponType> w, int s) {
         this.weapons = new ArrayList<WeaponType>(w);
         this.nShields = s;
         this.nWeapons = -1;        
@@ -41,9 +41,9 @@ public class Damage {
     * @brief Copy constructor
     * @param d another Damage instance
     */
-    protected Damage (Damage d) {
-        this.nWeapons = d.nWeapons;
-        this.nShields = d.nShields;
+    Damage (Damage d) {
+        this.nWeapons = d.getNWeapons();
+        this.nShields = d.getNShields();
         this.weapons = new ArrayList<WeaponType>(d.weapons);         
     }
     
@@ -51,7 +51,7 @@ public class Damage {
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    protected DamageToUI getUIversion () {
+    DamageToUI getUIversion () {
         return new DamageToUI (this);
     }
     

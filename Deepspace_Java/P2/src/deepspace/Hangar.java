@@ -20,7 +20,7 @@ public class Hangar{
     /**
     * @brief Constructor
     */
-    protected Hangar (int capacity){
+    Hangar (int capacity){
         maxElements=capacity;
         shieldBoosters= new ArrayList<>();
         weapons= new ArrayList<>();
@@ -29,7 +29,7 @@ public class Hangar{
     /**
     * @brief Copy constructor
     */
-    protected Hangar (Hangar h){
+    Hangar (Hangar h){
         
         maxElements = h.maxElements;
         shieldBoosters = new ArrayList <ShieldBooster> (h.shieldBoosters);
@@ -40,7 +40,7 @@ public class Hangar{
     * @brief builds a new HangarToUI object from *this
     * @return HangarToUI
     */
-    protected HangarToUI getUIversion(){
+    HangarToUI getUIversion(){
         return new HangarToUI (this);
     }
     

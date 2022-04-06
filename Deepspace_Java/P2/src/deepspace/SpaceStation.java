@@ -35,7 +35,7 @@ public class SpaceStation {
     * @param n name
     * @param supplies a instance os SuppliesPackage
     */
-    protected SpaceStation (String n, SuppliesPackage supplies) {
+    SpaceStation (String n, SuppliesPackage supplies) {
         ammoPower = supplies.getAmmoPower();
         fuelUnits = supplies.getFuelUnits();
         shieldPower = supplies.getShieldPower();

@@ -13,26 +13,24 @@ public class EnemyStarShip{
     private float ammoPower;
     private String name;
     private float shieldPower;
-    private GameUniverse gameUniverse;
     private Loot loot;
     private Damage damage;
     
     /**
     * @brief Constructor
     */
-    protected EnemyStarShip (String n, float a, float s, Loot l, Damage d){
+    EnemyStarShip (String n, float a, float s, Loot l, Damage d){
         name=n;
         ammoPower=a;
         shieldPower=s;
         loot=l;
         damage = new Damage(d);
-        gameUniverse = new GameUniverse();
     }
     
     /**
     * @brief Copy constructor
     */
-    protected EnemyStarShip (EnemyStarShip e){
+    EnemyStarShip (EnemyStarShip e){
         name=e.name;
         ammoPower=e.ammoPower;
         shieldPower= e.shieldPower;
