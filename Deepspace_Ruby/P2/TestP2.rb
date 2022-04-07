@@ -7,8 +7,6 @@ require_relative "GameUniverse"
 require_relative "EnemyStarShip"
 require_relative "SpaceStation"
 
-
-module Deepspace
   class Test_P2
     def main
       
@@ -19,9 +17,9 @@ module Deepspace
       arma1=DeepSpace::Weapon.new("Pistola",DeepSpace::WeaponType::PLASMA,2)
       arma2=DeepSpace::Weapon.new("Cannon",DeepSpace::WeaponType::LASER,0)
       arma3=DeepSpace::Weapon.new("Misil",DeepSpace::WeaponType::MISSILE,5)
-      potenciador1=ShieldBooster.new("Pinchos",4,1)
-      potenciador2=ShieldBooster.new("Recubrimiento",5,5)
-      potenciador3=ShieldBooster.new("Hierro",2,4)
+      potenciador1=DeepSpace::ShieldBooster.new("Pinchos",4,1)
+      potenciador2=DeepSpace::ShieldBooster.new("Recubrimiento",5,5)
+      potenciador3=DeepSpace::ShieldBooster.new("Hierro",2,4)
       
       hangar1.addWeapon(arma1)
       hangar1.addShieldBooster(potenciador1)
@@ -34,16 +32,16 @@ module Deepspace
       
       #puts"\n\nConstruimos una copia y le eliminamos algunos items:"
       
-      hangar2=Hangar.newCopy(hangar1)
+      hangar2=DeepSpace::Hangar.newCopy(hangar1)
       hangar2.removeShieldBooster(1)
       hangar2.removeWeapon(2)
       
       #puts hangar2.to_s
       
       puts "\n\nPrueba de Damage\n"
-      damage1=Damage.newNumericWeapons(5,4)#0 armas y 4 escudos
-      wl=[WeaponType::PLASMA,WeaponType::MISSILE,WeaponType::PLASMA]
-      damage2=Damage.newSpecificWeapons(wl,2)#Vector de tipos y 2 escudos
+      damage1=DeepSpace::Damage.newNumericWeapons(5,4) #5 armas y 4 escudos
+      wl=[DeepSpace::WeaponType::PLASMA,DeepSpace::WeaponType::MISSILE,DeepSpace::WeaponType::PLASMA]
+      damage2=DeepSpace::Damage.newSpecificWeapons(wl,2)#Vector de tipos y 2 escudos
       
       puts damage1.to_s
       puts damage2.to_s
@@ -185,4 +183,3 @@ module Deepspace
   
   p = Test_P2.new
   p.main
-end

@@ -13,7 +13,7 @@ module DeepSpace
         attr_reader :nShields, :nWeapons, :weapons
         
         # nWeapons constructor -> numeric damage
-        def newNumericWeapons (w, s)
+        def newNumericWeapons(w, s)
             @nShields = s 
             @nWeapons = w
             @weapons=Array.new()

@@ -25,6 +25,7 @@ module DeepSpace
             def to_s
                 return "#{@name}"
             end
+            
         end
         
         LASER   = Type.new(2.0, "LASER")

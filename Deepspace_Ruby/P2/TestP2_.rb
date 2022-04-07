@@ -1,15 +1,15 @@
 #!/usr/bin/env ruby
 #encoding:utf-8
 
-require_relative '../lib/Hangar'
-require_relative '../lib/EnemyStarShip'
-require_relative '../lib/Damage'
-require_relative '../lib/GameUniverse'
-require_relative '../lib/SpaceStation'
-require_relative '../lib/DamageToUI'
-require_relative '../lib/EnemyToUI'
-require_relative '../lib/HangarToUI'
-require_relative '../lib/SpaceStationToUI'
+require_relative 'Hangar'
+require_relative 'EnemyStarShip'
+require_relative 'Damage'
+require_relative 'GameUniverse'
+require_relative 'SpaceStation'
+require_relative 'DamageToUI'
+require_relative 'EnemyToUI'
+require_relative 'HangarToUI'
+require_relative 'SpaceStationToUI'
 
 #Class for test main program for second practice
 #
@@ -27,7 +27,7 @@ class TestP2
         3.times do 
             maxElements = rand(10)
             puts "Creating Hangar.new(#{maxElements})"
-            hangar_test = Hangar.new(maxElements)
+            hangar_test = DeepSpace::Hangar.new(maxElements)
             puts "Result: "
             puts hangar_test
             
@@ -38,9 +38,9 @@ class TestP2
             7.times do
                 i += 1
                 name = "Weapon#{i}"
-                type = [WeaponType::LASER, WeaponType::MISSILE, WeaponType::PLASMA][rand(3)]
+                type = [DeepSpace::WeaponType::LASER, DeepSpace::WeaponType::MISSILE, DeepSpace::WeaponType::PLASMA][rand(3)]
                 uses = rand(10)
-                weapon = Weapon.new(name,type,uses)
+                weapon = DeepSpace::Weapon.new(name,type,uses)
                 puts "Trying to add: #{weapon}"
 
                 if hangar_test.addWeapon(weapon) == false
@@ -52,7 +52,7 @@ class TestP2
 
             puts
 
-            puts "Hangar state is: #{hangar_test}"
+            puts "Hangar state is: #{hangar_test.to_s}"
             puts
             puts "Removing three weapons"
             3.times do
@@ -73,7 +73,7 @@ class TestP2
                 name = "Shield#{i}"
                 boost = rand(9) + rand()
                 uses = rand(10)
-                shield = ShieldBooster.new(name, boost, uses)
+                shield = DeepSpace::ShieldBooster.new(name, boost, uses)
                 puts "Trying to add #{shield}"
 
                 if hangar_test.addShieldBooster(shield) == false
@@ -118,7 +118,7 @@ class TestP2
             puts
 
             puts "Creating Damage.newNumericWeapons(#{nWeapons}, #{nShields})"
-            damage_numeric = Damage.newNumericWeapons(nWeapons, nShields)
+            damage_numeric = DeepSpace::Damage.newNumericWeapons(nWeapons, nShields)
             weapons = []
 
             4.times do
