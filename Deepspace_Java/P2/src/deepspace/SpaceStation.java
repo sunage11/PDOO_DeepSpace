@@ -376,9 +376,9 @@ public class SpaceStation {
                         + " ; SHIELDLOSSPERUNITSHOT " + SHIELDLOSSPERUNITSHOT 
                         + " ; ammoPower " + ammoPower +" ; fuelUnits " + fuelUnits 
                             +" ; name " + name +" ; nMedals "+ nMedals +" ; shieldPower "+
-                                shieldPower + " ; pendingDamage "+ pendingDamage.toString()+
+                                shieldPower + " ; pendingDamage "+ pendingDamage+
                             " ; weapons " + weapons.toString() + " ; shieldBoosters " + 
-                            shieldBoosters.toString() + " ; hangar " + hangar.toString() + " ]";
+                            shieldBoosters + " ; hangar " + hangar + " ]";
         
         return output;
     }
