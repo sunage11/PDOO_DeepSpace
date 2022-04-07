@@ -9,7 +9,7 @@ module DeepSpace
 
     class SpaceStation
 
-        attr_reader :ammoPower, :hangar, :name, :nMedals, :pendingDamage, :shieldBoosters, :shieldPower, :speed, :weapons
+        attr_reader :fuelUnits, :ammoPower, :hangar, :name, :nMedals, :pendingDamage, :shieldBoosters, :shieldPower, :speed, :weapons
 
         @@MAXFUEL = 100
         @@SHIELDLOSSPERUNITSHOT = 0.1
@@ -115,7 +115,7 @@ module DeepSpace
         # boosters in use.
         def mountShieldBooster (i)
             if (@hangar != nil)
-                aux = @hangar.receiveShieldBooster(i)
+                aux = @hangar.removeShieldBooster(i)
                 if (aux != nil)
                     @shieldBoosters.add(aux)
                 end 
@@ -151,7 +151,7 @@ module DeepSpace
         #has hangar, this method does not operate
         def receiveHangar (h)
             if(@hangar == nil)
-                @hangar = Hangar.new(h)
+                @hangar = Hangar.newCopy(h)
             end
         end
 
@@ -194,7 +194,7 @@ module DeepSpace
         #Calculates the adjusted damage from param d to the weapon and shield
         # collections in *this and then saves it in pendingDamage
         def setPendingDamage (d)
-            @pendingDamage = d.adjuste(@weapons, @shieldBoosters)
+            @pendingDamage = d.adjust(@weapons, @shieldBoosters)
         end
 
         #returns true if *this is in a valid state (this implies not to have
