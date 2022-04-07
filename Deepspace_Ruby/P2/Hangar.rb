@@ -57,7 +57,7 @@ module DeepSpace
     
         def addWeapon(w)
             if(spaceAvailable())
-                @weapons.add(w)
+                @weapons.push(w)
                 return true
             else 
                 return false
@@ -69,7 +69,7 @@ module DeepSpace
         # return true if it has been added or false otherwise
         def addShieldBooster(s)
             if(spaceAvailable())
-                @shieldBoosters.add(w)
+                @shieldBoosters.push(s)
                 return true
             else 
                 return false
@@ -83,7 +83,7 @@ module DeepSpace
         # returns The deleted shield booster
         def removeShieldBooster (s)
             if (@shieldBoosters.size > s) 
-                Weapon output = @shieldBoosters.at(s);
+                output = @shieldBoosters.at(s);
                 @shieldBoosters.delete_at(s);
                 return output;
             else
@@ -97,7 +97,7 @@ module DeepSpace
         # returns The deleted weapon
         def removeWeapon (w)
             if (@weapons.size > w) 
-                Weapon output = @weapons.at(w);
+                output = @weapons.at(w);
                 @weapons.delete_at(w);
                 return output;
             else
