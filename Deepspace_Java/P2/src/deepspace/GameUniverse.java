@@ -30,6 +30,7 @@ public class GameUniverse {
         currentStation = null;
         spaceStations = new ArrayList<>();
         currentEnemy = null;
+        currentStationIndex=-1;
 
     }
     
@@ -173,9 +174,9 @@ public class GameUniverse {
         String output = "GameUniverse [ gameState " + gameState 
                         + " ; turns " + turns 
                         + " ; dice " + dice.toString()
-                        + " ; currentStation " + currentStation.toString()
+                        + " ; currentStation " + currentStation
                         + " ; spaceStations " + spaceStations.toString()
-                        + " ; currentEnemy " + currentEnemy.toString() + " ]";
+                        + " ; currentEnemy " + currentEnemy + " ]";
         
         return output;
     }

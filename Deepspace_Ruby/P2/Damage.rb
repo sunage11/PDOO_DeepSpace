@@ -20,13 +20,22 @@ module DeepSpace
         end
 
         # nWeapons constructor -> numeric damage
+<<<<<<< HEAD
+        def self.newNumericWeapons(w, s)
+            self.new(w,s,[])
+=======
         def self.newNumericWeapons(w,s)
             return self.new(w,s,[]) 
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
         end
 
         # WeaponType constructor -> specific damage 
         def self.newSpecificWeapons(w,s)
+<<<<<<< HEAD
+            self.new(-1,s,w)
+=======
             return self.new(-1,s,w)
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
         end
 
         # Copy constructor
@@ -36,7 +45,11 @@ module DeepSpace
 
 
         # builds a new DamageToUI object from *this
+<<<<<<< HEAD
+        def getUIversion 
+=======
         def getUIversion
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
             DamageToUI.new(self)
         end
         
@@ -60,7 +73,6 @@ module DeepSpace
         # returns a an adjusted version of *this. It takes into consideration
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
-        
         def adjust (w, s)
             shields = [@nShields, s.length].min 
 
@@ -83,7 +95,7 @@ module DeepSpace
                 return output
             end
         end
-      
+
 
         # If *this has w.getType() in the array weapons, it deletes that element
         # of the array. In other case, it decrements nWeapons in one unit

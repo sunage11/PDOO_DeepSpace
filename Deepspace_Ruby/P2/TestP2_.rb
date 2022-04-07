@@ -10,8 +10,11 @@ require_relative 'DamageToUI'
 require_relative 'EnemyToUI'
 require_relative 'HangarToUI'
 require_relative 'SpaceStationToUI'
+<<<<<<< HEAD
+=======
 require_relative 'GameStateController'
 require_relative 'SuppliesPackage'
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
 require_relative 'Loot'
 
 #Class for test main program for second practice
@@ -20,8 +23,11 @@ require_relative 'Loot'
 
 class TestP2
 
+<<<<<<< HEAD
+=======
     include DeepSpace
 
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
     def self.main
         #Testing Hangar Class
         puts "TESTING Class: Hangar (3 times)"
@@ -130,7 +136,12 @@ class TestP2
 
             nShields = rand(10)
             puts "Creating Damage.newSpecificWeapons([#{weapons.join(", ")}],#{nShields})"
+<<<<<<< HEAD
+                weapons << [DeepSpace::WeaponType::LASER, DeepSpace::WeaponType::MISSILE, DeepSpace::WeaponType::PLASMA][rand(3)]
+                damage_specific = DeepSpace::Damage.newSpecificWeapons(weapons, nShields)
+=======
             damage_specific = DeepSpace::Damage.newSpecificWeapons(weapons, nShields)
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
 
             puts
 

@@ -243,6 +243,7 @@ public class TestP2_ {
         SuppliesPackage s = new SuppliesPackage(0.6f, 3.14f, 1.7f);
         SpaceStation space_test = new SpaceStation("Test Station", s);
         
+        
         System.out.println("The SpaceStation is:");
         System.out.println(space_test);
         System.out.println("-----------");
