@@ -20,13 +20,22 @@ module DeepSpace
         end
 
         # nWeapons constructor -> numeric damage
+<<<<<<< HEAD
         def self.newNumericWeapons(w, s)
             self.new(w,s,[])
+=======
+        def self.newNumericWeapons(w,s)
+            return self.new(w,s,[]) 
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
         end
 
         # WeaponType constructor -> specific damage 
         def self.newSpecificWeapons(w,s)
+<<<<<<< HEAD
             self.new(-1,s,w)
+=======
+            return self.new(-1,s,w)
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
         end
 
         # Copy constructor
@@ -36,7 +45,11 @@ module DeepSpace
 
 
         # builds a new DamageToUI object from *this
+<<<<<<< HEAD
         def getUIversion 
+=======
+        def getUIversion
+>>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
             DamageToUI.new(self)
         end
         

@@ -5,6 +5,9 @@
 # Loot
 # It represents the loot that a station can get if it beats an enemy starship
 
+
+require_relative 'LootToUI'
+
 module DeepSpace
 
         class Loot 
@@ -49,7 +52,7 @@ module DeepSpace
             end
 
             # builds a new LootToUI object from self
-            def getUIVersion
+            def getUIversion
                 LootToUI.new(self)
             end
 
