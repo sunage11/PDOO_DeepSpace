@@ -28,11 +28,6 @@ module DeepSpace
 
         end
 
-        # otro
-        # otro
-
-        #otro
-
         # Set the amount of fuel to the value passed without ever 
         # exceeding the limit.
         def assignFuelValue (f)
@@ -47,6 +42,7 @@ module DeepSpace
         def cleanPendingDamage ()
             if (pendingDamage.hasNoEffect)
                 pendingDamage = nil
+            end
         end
 
         # It eliminates all mounted weapons and boosters that do not have 
@@ -136,9 +132,7 @@ module DeepSpace
                 if(aux != nil)
                     @weapons.add(aux) 
                 end
-            end
-
-            
+            end  
         end
 
         #Decrease in fuel units due to a displacement. The number of stored 
@@ -158,6 +152,7 @@ module DeepSpace
         def receiveHangar (h)
             if(@hangar == nil)
                 @hangar = Hangar.new(h)
+            end
         end
 
         #If *this has not hangar, returns false. Otherwise, it returns the 

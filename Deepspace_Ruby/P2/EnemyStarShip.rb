@@ -5,7 +5,8 @@
 # EnemyStarShip
 # It represents 
 
-def module
+module DeepSpace
+
     class EnemyStarShip
        
         attr_reader :name, :ammoPower, :shieldPower, :loot, :damage

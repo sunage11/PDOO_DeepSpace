@@ -41,6 +41,7 @@ module DeepSpace
             if(@gamestate.state == GameState::AFTERCOMBAT ||
                 @gameState.state == GameState::INIT)
                 @currentStation.discardHangar
+            end
         end
 
         #discards shield booster i of the current station if gameState is 
@@ -49,6 +50,7 @@ module DeepSpace
             if(@gamestate.state == GameState::AFTERCOMBAT ||
                 @gameState.state == GameState::INIT)
                 @currentStation.discardShieldBooster(i)
+            end
         end
 
         #discards shield booster i of the current station's hangar if 
@@ -57,6 +59,7 @@ module DeepSpace
             if(@gamestate.state == GameState::AFTERCOMBAT ||
                 @gameState.state == GameState::INIT)
                 @currentStation.discardShieldBoosterInHangar(i)
+            end
         end
 
         #discards weapon i of the current station if gameState is INIT 
@@ -65,6 +68,7 @@ module DeepSpace
             if(@gamestate.state == GameState::AFTERCOMBAT ||
                 @gameState.state == GameState::INIT)
                 @currentStation.discardWeapon(i)
+            end
         end
 
         def discardWeaponInHangar (i)

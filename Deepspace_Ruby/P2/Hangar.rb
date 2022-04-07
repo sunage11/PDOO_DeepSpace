@@ -82,7 +82,7 @@ module DeepSpace
         # param s The index of the shield booster to delete
         # returns The deleted shield booster
         def removeShieldBooster (s)
-            if (@shieldBoosters.size > s) {
+            if (@shieldBoosters.size > s) 
                 Weapon output = @shieldBoosters.at(s);
                 @shieldBoosters.delete_at(s);
                 return output;
@@ -96,7 +96,7 @@ module DeepSpace
         # param w The index of the weapon to delete
         # returns The deleted weapon
         def removeWeapon (w)
-            if (@weapons.size > w) {
+            if (@weapons.size > w) 
                 Weapon output = @weapons.at(w);
                 @weapons.delete_at(w);
                 return output;
