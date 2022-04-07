@@ -41,6 +41,7 @@ module DeepSpace
         end
         
         # ----
+        private
         def arrayContainsType (w, t)
             
             pos=0;
@@ -60,7 +61,7 @@ module DeepSpace
         # returns a an adjusted version of *this. It takes into consideration
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
-        
+        public
         def adjust (w, s)
             shields = [@nShields, s.length].min 
 
@@ -115,6 +116,7 @@ module DeepSpace
         end
 
     end
+
 end
 
 

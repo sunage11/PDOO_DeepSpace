@@ -16,6 +16,7 @@ module DeepSpace
         @@WIN=10
         
         #Constructor
+        public
         def initialize 
             @gameState= GameStateController.new
             @turns = 0

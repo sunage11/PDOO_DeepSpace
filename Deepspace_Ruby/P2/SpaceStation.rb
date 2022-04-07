@@ -30,6 +30,7 @@ module DeepSpace
 
         # Set the amount of fuel to the value passed without ever 
         # exceeding the limit.
+        private
         def assignFuelValue (f)
             if (f<=@@MAXFUEL)
                 @fuelUnits = f
@@ -47,6 +48,7 @@ module DeepSpace
 
         # It eliminates all mounted weapons and boosters that do not have 
         # any use left.
+        public
         def cleanUpMountedItems ()       
            
             @weapons.each do |aux|

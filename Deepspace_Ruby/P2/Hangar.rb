@@ -34,7 +34,7 @@ module DeepSpace
         
         # It returns true if elements can be added. 
         # return true if there is empty space to add elements, false in other case
-
+        private 
         def spaceAvailable
             currentElements=@shieldBoosters.size() + @weapons.size()
             #puts maxElements.inspect
@@ -49,7 +49,7 @@ module DeepSpace
         # Adds w to the weapons array if there is enough room for it
         # param w weapon to add
         # return true if it has been added or false otherwise
-    
+        public 
         def addWeapon(w)
             if(spaceAvailable())
                 @weapons.push(w)
