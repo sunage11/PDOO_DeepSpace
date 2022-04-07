@@ -20,6 +20,8 @@ require_relative 'Loot'
 
 class TestP2
 
+
+    include DeepSpace
     def self.main
         #Testing Hangar Class
         puts "TESTING Class: Hangar (3 times)"
@@ -273,10 +275,12 @@ class TestP2
         shield_test = DeepSpace::ShieldBooster.new("Shield Test", 3.1415, 4)
         weapon_test = DeepSpace::Weapon.new("Weapon Test", DeepSpace::WeaponType::PLASMA, 2)
 
+        puts space_test.inspect
+        puts space_test.hangar.maxElements
+
         space_test.receiveShieldBooster(shield_test)
         space_test.receiveWeapon(weapon_test)
 
-        puts space_test.hangar
         puts
 
         puts "Mounting some weapons and shieldboosters..."

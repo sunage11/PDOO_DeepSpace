@@ -28,6 +28,7 @@ module DeepSpace
         # WeaponType constructor -> specific damage 
         def self.newSpecificWeapons(w,s)
 
+
             return self.new(-1,s,w)
         end
 
@@ -62,6 +63,7 @@ module DeepSpace
         # returns a an adjusted version of *this. It takes into consideration
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
+        
         def adjust (w, s)
             shields = [@nShields, s.length].min 
 
@@ -84,7 +86,7 @@ module DeepSpace
                 return output
             end
         end
-
+      
 
         # If *this has w.getType() in the array weapons, it deletes that element
         # of the array. In other case, it decrements nWeapons in one unit

@@ -13,8 +13,6 @@ require_relative 'WeaponType'
 module DeepSpace
     class Hangar
 
-        attr_reader :maxElements, :shieldBoosters, :weapons
-
         #Constructor
         def initialize(capacity)
             @maxElements=capacity
@@ -24,18 +22,10 @@ module DeepSpace
 
         #Copy constructor 
         def self.newCopy(h)
-            copy = new(h.maxElements)
-
-            h.shieldBoosters.each do |s|
-                copy.addShieldBooster(s)
-            end
-
-            h.weapons.each do |w|
-                copy.addWeapon(w)
-            end
-
-            return copy
+            return h.clone
         end
+
+        attr_reader :maxElements, :shieldBoosters, :weapons
 
         #It builds a new HangarToUI object from *this
         def getUIversion
@@ -47,7 +37,12 @@ module DeepSpace
 
         def spaceAvailable
             currentElements=@shieldBoosters.size() + @weapons.size()
-            output = @maxElements > currentElements 
+            #puts maxElements.inspect
+            if (@maxElements < currentElements)
+                return true
+            else
+                return false
+            end
         end
 
 
