@@ -5,6 +5,8 @@
 # Weapon
 # It represents a spacial station's weapon
 
+require_relative'WeaponToUI'
+
 module DeepSpace
 
     class Weapon 
@@ -46,6 +48,11 @@ module DeepSpace
             else
                 1.0
             end 
+        end
+       
+        # builds a new DamageToUI object from *this
+        def getUIversion 
+            WeaponToUI.new(self)
         end
 
         #toString

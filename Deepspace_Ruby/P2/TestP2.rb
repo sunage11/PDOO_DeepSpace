@@ -40,9 +40,9 @@ class Test_P2
     #puts hangar2.to_s
     
     puts "\n\nPrueba de Damage\n"
-    damage1=DeepSpace::Damage.newNumericWeapons(5,4)#0 armas y 4 escudos
+    damage1=DeepSpace::Damage.newNumericWeapons(5,4) #0 armas y 4 escudos
     wl=[WeaponType::PLASMA,WeaponType::MISSILE,WeaponType::PLASMA]
-    damage2=Damage.newSpecificWeapons(wl,2)#Vector de tipos y 2 escudos
+    damage2=Damage.newSpecificWeapons(wl,2) #Vector de tipos y 2 escudos
     
     puts damage1.to_s
     puts damage2.to_s

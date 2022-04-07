@@ -5,6 +5,8 @@
 # Weapon
 # It represents a spacial station's shield booster
 
+require_relative'ShieldToUI'
+
 module DeepSpace
 
     class ShieldBooster 
@@ -43,9 +45,17 @@ module DeepSpace
         end
 
         # builds a new ShieldToUI object from self
-        def getUIVersion
+        def getUIversion
             ShieldToUI.new(self)
         end
+
+         #toString
+         def to_s
+            output = "ShieldBooster [ name #{@name} ; " +
+                     "boost #{@boost} ; " +
+                     "uses  #{@uses} ]"
+        end
+        
 
     end
 

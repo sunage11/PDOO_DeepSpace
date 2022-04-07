@@ -1,4 +1,4 @@
-module Deepspace
+module DeepSpace
 
 # 30.3.17 - Translation from Java
 # @author Profe
