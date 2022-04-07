@@ -40,14 +40,14 @@ module DeepSpace
         #It builds a new HangarToUI object from *this
         def getUIversion
             return HangarToUI.new(self)
-        end
+          end
         
         # It returns true if elements can be added. 
         # return true if there is empty space to add elements, false in other case
 
         def spaceAvailable
             currentElements=@shieldBoosters.size() + @weapons.size()
-            return(maxElements > currentElements)
+            output = @maxElements > currentElements 
         end
 
 

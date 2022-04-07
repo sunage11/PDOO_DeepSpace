@@ -12,30 +12,31 @@ module DeepSpace
 
         attr_reader :nShields, :nWeapons, :weapons
         
-        # nWeapons constructor -> numeric damage
-        def newNumericWeapons(w, s)
-            @nShields = s 
+        #Constructor
+        def initialize(w,s,ws)
+            @nShields = s
             @nWeapons = w
-            @weapons=Array.new()
-            @weapons=nil
+            @weapons = ws.clone
+        end
+
+        # nWeapons constructor -> numeric damage
+        def self.newNumericWeapons(w,s)
+            return self.new(w,s,[]) 
         end
 
         # WeaponType constructor -> specific damage 
-        def newSpecificWeapons(w,s)
-            @weapons=Array.new(w)
-            @nShields= s
-            @nWeapons= -1
-            
+        def self.newSpecificWeapons(w,s)
+            return self.new(-1,s,w)
         end
 
         # Copy constructor
-        def newCopy(d)
+        def self.newCopy(d)
             return d.clone
         end
 
 
         # builds a new DamageToUI object from *this
-        def getUIversion (d)
+        def getUIversion
             DamageToUI.new(self)
         end
         
@@ -61,11 +62,11 @@ module DeepSpace
         # imply losing weapons or shields that are nos specified in w or sb
         
         def adjust (w, s)
-            shields = [@nShields, s.lenght].min 
+            shields = [@nShields, s.length].min 
 
             # If it is numeric damage
             if (@nWeapons != -1)
-                output = Damage.newNumericWeapons([@nWeapons, w.lenght].min, shields)
+                output = Damage.newNumericWeapons([@nWeapons, w.length].min, shields)
                 return output
             else
                 aux = []

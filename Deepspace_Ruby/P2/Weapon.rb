@@ -5,6 +5,9 @@
 # Weapon
 # It represents a spacial station's weapon
 
+
+require_relative 'WeaponToUI'
+
 module DeepSpace
 
     class Weapon 
@@ -55,7 +58,10 @@ module DeepSpace
                      "uses  #{@uses} ]"
         end
         
-        
+         #To UI
+         def getUIversion
+            return WeaponToUI.new(self)
+        end
 
     end
 

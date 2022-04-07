@@ -10,6 +10,9 @@ require_relative 'DamageToUI'
 require_relative 'EnemyToUI'
 require_relative 'HangarToUI'
 require_relative 'SpaceStationToUI'
+require_relative 'GameStateController'
+require_relative 'SuppliesPackage'
+require_relative 'Loot'
 
 #Class for test main program for second practice
 #
@@ -17,7 +20,7 @@ require_relative 'SpaceStationToUI'
 
 class TestP2
 
-    include Deepspace
+    include DeepSpace
 
     def self.main
         #Testing Hangar Class
@@ -122,12 +125,12 @@ class TestP2
             weapons = []
 
             4.times do
-                weapons << [WeaponType::LASER, WeaponType::MISSILE, WeaponType::PLASMA][rand(3)]
+                weapons << [DeepSpace::WeaponType::LASER, DeepSpace::WeaponType::MISSILE, DeepSpace::WeaponType::PLASMA][rand(3)]
             end
 
             nShields = rand(10)
             puts "Creating Damage.newSpecificWeapons([#{weapons.join(", ")}],#{nShields})"
-            damage_specific = Damage.newSpecificWeapons(weapons, nShields)
+            damage_specific = DeepSpace::Damage.newSpecificWeapons(weapons, nShields)
 
             puts
 
@@ -142,12 +145,12 @@ class TestP2
             puts
 
             puts "Creating a copy of Numeric Damage"
-            copy_test = Damage.newCopy(damage_numeric)
+            copy_test = DeepSpace::Damage.newCopy(damage_numeric)
             puts "Copied Damage: #{copy_test}"
             puts
 
             puts "Creating a copy of a Specific Damage"
-            copy_test = Damage.newCopy(damage_specific)
+            copy_test = DeepSpace::Damage.newCopy(damage_specific)
             puts "Copied Specific Damage: #{copy_test}"
             puts
 
@@ -156,12 +159,12 @@ class TestP2
             adjust_weapons = []
             shields_adjust = []
 
-            adjust_weapons << Weapon.new("First Weapon", WeaponType::LASER, 3)
-            adjust_weapons << Weapon.new("Second Weapon", WeaponType::MISSILE, 5)
-            adjust_weapons << Weapon.new("Third Weapon", WeaponType::PLASMA, 2)
+            adjust_weapons << DeepSpace::Weapon.new("First Weapon", DeepSpace::WeaponType::LASER, 3)
+            adjust_weapons << DeepSpace::Weapon.new("Second Weapon", DeepSpace::WeaponType::MISSILE, 5)
+            adjust_weapons << DeepSpace::Weapon.new("Third Weapon", DeepSpace::WeaponType::PLASMA, 2)
 
-            shields_adjust << ShieldBooster.new("First Shield", 3.4, 3)
-            shields_adjust << ShieldBooster.new("Second shield", 6, 1)
+            shields_adjust << DeepSpace::ShieldBooster.new("First Shield", 3.4, 3)
+            shields_adjust << DeepSpace::ShieldBooster.new("Second shield", 6, 1)
 
             puts "damage_numeric.adjust([#{adjust_weapons.join(", ")}],[#{shields_adjust.join(", ")}])"
             puts
@@ -181,7 +184,7 @@ class TestP2
 
             puts "Testing hasNoEffect"
             puts "Has no effect (numeric damage): #{damage_numeric.hasNoEffect}"
-            noEffect = Damage.newNumericWeapons(0,0)
+            noEffect = DeepSpace::Damage.newNumericWeapons(0,0)
             puts "Has no effect (empty damage): #{noEffect.hasNoEffect}"
             puts
 
@@ -195,7 +198,7 @@ class TestP2
             puts
 
             puts "Testing discardWeapon (10 weapons)"
-            weapon = Weapon.new("Test Weapon", WeaponType::PLASMA, 2)
+            weapon = DeepSpace::Weapon.new("Test Weapon", DeepSpace::WeaponType::PLASMA, 2)
             10.times do 
                 damage_numeric.discardWeapon(nil)
                 damage_specific.discardWeapon(weapon)
@@ -211,13 +214,13 @@ class TestP2
         puts "**********************************"
 
         puts "Creating an enemy starship"
-        enemy_test = EnemyStarShip.new("Enemy Test", 1.12, 3.14, Loot.new(1,2,3,4,5), Damage.newNumericWeapons(3,3))
+        enemy_test = DeepSpace::EnemyStarShip.new("Enemy Test", 1.12, 3.14, DeepSpace::Loot.new(1,2,3,4,5), DeepSpace::Damage.newNumericWeapons(3,3))
 
         puts "Enemy starship: \n#{enemy_test}"
         puts
 
         puts "Crating a copy of the enemy starship"
-        enemy_copy = EnemyStarShip.newCopy(enemy_test)
+        enemy_copy = DeepSpace::EnemyStarShip.newCopy(enemy_test)
         puts "Copy: \n#{enemy_copy}"
         puts
 
@@ -242,8 +245,8 @@ class TestP2
         puts "TESTING Class: SpaceStation"
         puts "**********************************"
 
-        s = SuppliesPackage.new(0.6,3.14,1.7)
-        space_test = SpaceStation.new("Test Station", s)
+        s = DeepSpace::SuppliesPackage.new(0.6,3.14,1.7)
+        space_test = DeepSpace::SpaceStation.new("Test Station", s)
 
         puts "The SpaceStation is:"
         puts space_test
@@ -257,7 +260,7 @@ class TestP2
         puts
 
         puts "Testing receive Hangar"
-        hangar_station = Hangar.new(10)
+        hangar_station = DeepSpace::Hangar.new(10)
         space_test.receiveHangar(hangar_station)
         puts space_test.hangar
         puts
@@ -265,11 +268,11 @@ class TestP2
         puts "Adding some weapons and shieldboosters..."
         puts "Cleaning Hangar..."
         space_test.discardHangar
-        hangar_station = Hangar.new(15)
+        hangar_station = DeepSpace::Hangar.new(15)
         space_test.receiveHangar(hangar_station)
 
-        shield_test = ShieldBooster.new("Shield Test", 3.1415, 4)
-        weapon_test = Weapon.new("Weapon Test", WeaponType::PLASMA, 2)
+        shield_test = DeepSpace::ShieldBooster.new("Shield Test", 3.1415, 4)
+        weapon_test = DeepSpace::Weapon.new("Weapon Test", DeepSpace::WeaponType::PLASMA, 2)
 
         space_test.receiveShieldBooster(shield_test)
         space_test.receiveWeapon(weapon_test)
@@ -300,7 +303,7 @@ class TestP2
         puts
 
         puts "Testing setPendingDamage"
-        damage_test = Damage.newNumericWeapons(2,3)
+        damage_test = DeepSpace::Damage.newNumericWeapons(2,3)
         space_test.setPendingDamage(damage_test)
         puts "New damage:"
         puts space_test.pendingDamage

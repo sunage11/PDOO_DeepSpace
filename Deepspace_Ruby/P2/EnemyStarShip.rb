@@ -5,6 +5,11 @@
 # EnemyStarShip
 # It represents 
 
+require_relative 'Damage'
+require_relative 'Loot'
+require_relative 'EnemyToUI'
+require_relative 'ShotResult'
+
 module DeepSpace
 
     class EnemyStarShip
@@ -17,22 +22,17 @@ module DeepSpace
             @ammoPower=a;
             @shieldPower=s;
             @loot=l;
-            @damage =  Damage.new(d);
-            @gameUniverse =  GameUniverse.new();
+            @damage =  Damage.newCopy(d);
         end
 
         #Copy constructor 
         def self.newCopy(e)
-            @name=e.name;
-            @ammoPower=e.ammoPower;
-            @shieldPower= e.shieldPower;
-            @loot = e.loot;
-            @damage = Damage.new(e.damage);
+            return e.clone
         end
 
         #It builds a new HangarToUI object from *this
         def getUIversion
-            return EnemyStarShipToUI.new(self)
+            return EnemyToUI.new(self)
         end
 
         # returns the shoot energy level of the enemy ship
@@ -51,7 +51,7 @@ module DeepSpace
             if (shot > @shieldPower)
                 return ShotResult::DONOTRESIST
             else
-                retunt ShotResult::RESIST 
+                return ShotResult::RESIST 
             end 
         end
 
