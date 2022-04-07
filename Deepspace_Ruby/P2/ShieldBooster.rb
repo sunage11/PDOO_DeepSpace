@@ -5,11 +5,7 @@
 # Weapon
 # It represents a spacial station's shield booster
 
-<<<<<<< HEAD
 require_relative'ShieldToUI'
-=======
-require_relative 'ShieldToUI'
->>>>>>> b56c07a8099700aa36fee02faffb2aadc4b580b0
 
 module DeepSpace
 
