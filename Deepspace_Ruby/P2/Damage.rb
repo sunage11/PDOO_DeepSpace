@@ -20,12 +20,15 @@ module DeepSpace
         end
 
         # nWeapons constructor -> numeric damage
-        def self.newNumericWeapons(w,s)
-            return self.new(w,s,[]) 
+
+        def self.newNumericWeapons(w, s)
+            self.new(w,s,[])
         end
 
         # WeaponType constructor -> specific damage 
         def self.newSpecificWeapons(w,s)
+
+
             return self.new(-1,s,w)
         end
 

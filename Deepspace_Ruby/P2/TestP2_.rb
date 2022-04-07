@@ -20,8 +20,8 @@ require_relative 'Loot'
 
 class TestP2
 
-    include DeepSpace
 
+    include DeepSpace
     def self.main
         #Testing Hangar Class
         puts "TESTING Class: Hangar (3 times)"
@@ -130,7 +130,8 @@ class TestP2
 
             nShields = rand(10)
             puts "Creating Damage.newSpecificWeapons([#{weapons.join(", ")}],#{nShields})"
-            damage_specific = DeepSpace::Damage.newSpecificWeapons(weapons, nShields)
+                weapons << [DeepSpace::WeaponType::LASER, DeepSpace::WeaponType::MISSILE, DeepSpace::WeaponType::PLASMA][rand(3)]
+                damage_specific = DeepSpace::Damage.newSpecificWeapons(weapons, nShields)
 
             puts
 
