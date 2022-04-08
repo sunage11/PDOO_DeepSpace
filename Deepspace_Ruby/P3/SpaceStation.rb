@@ -65,14 +65,27 @@ module Deepspace
   
         end
 
-        # Set the reference of the hangar to null to indicate that it 
-        # is not available
+        # an attempt is made to discard the shield booster with index i from 
+        # the current shield booster pool. In addition to losing the shield boost, 
+        # it updates the pending damage if there is any
         def discardHangar ()
             @hangar = nil
         end
 
         def discardShieldBooster (i)
-            # next session
+            size = @shieldBoosters.length
+
+            if(i>=0 && i<size) 
+                shieldBoosters.remove_at(i)
+
+                if (pendingDamage != nil)
+                    pendingDamage.discardShieldBooster
+                    cleanPendingDamage
+                end
+            end
+        end
+
+            
         end
 
         # If a hangar is available, it is requested to discard the booster 
@@ -83,9 +96,20 @@ module Deepspace
             end
         end
 
-        # ---
+        # It tries to discard the weapon i of the array weapons. Apart from
+        # losing the weapon, it should update the pendingDamage if there is any.
+   
         def discardWeapon (i)
-            # next session
+            size = @weapons.length
+
+            if(i>=0 && i<size) 
+                w = weapons.remove_at(i)
+
+                if (pendingDamage != nil)
+                    pendingDamage.discardWeapon(w)
+                    cleanPendingDamage
+                end
+            end
         end
 
         # If a hangar is available, it is requested to discard the weapon 
