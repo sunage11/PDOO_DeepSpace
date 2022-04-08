@@ -139,6 +139,9 @@ class CardDealer
         @hangars.add(Hangar.new(2))
         @hangars.add(Hangar.new(1))
         @hangars.add(Hangar.new(1))
+
+        # My Hangar
+        hangars.add(Hangar.new(5));
     end
     
     def createEnemies() 
@@ -189,7 +192,10 @@ class CardDealer
         @enemies.add(EnemyStarShip.new("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         @enemies.add(EnemyStarShip.new("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));
+        
+        # My  card
+        enemies.add(EnemyStarShip.new("Mi enemigo", 400, 400, goodLoot, regularSpecificDamage0));              
     end
 end # class
 
