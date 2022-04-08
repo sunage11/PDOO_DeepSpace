@@ -104,7 +104,16 @@ public class SpaceStation {
     * @param 
     */
     void discardShieldBooster (int i) {
-        throw new UnsupportedOperationException();
+        int size= shieldBoosters.size();
+        
+        if(i>=0 && i < size){
+            shieldBoosters.remove(i);
+            
+            if(pendingDamage!=null){
+                pendingDamage.discardShieldBooster();
+                cleanPendingDamage();
+            }
+        }
     }
     
     /**
@@ -122,7 +131,16 @@ public class SpaceStation {
     * @param d another Damage instance
     */
     void discardWeapon (int i) {
-        throw new UnsupportedOperationException();
+        int size= weapons.size();
+        
+        if(i>=0 && i < size){
+            Weapon w = weapons.remove(i);
+            
+            if(pendingDamage!=null){
+                pendingDamage.discardWeapon(w);
+                cleanPendingDamage();
+            }
+        }
     }
     
     /**
@@ -137,11 +155,12 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief It makes a shot and it returns its energy or power. To do this, the
+    * firing power is multiplied by the enhancing factors provided by all weapons.
+    * @return its energy or power
     */
     float fire () {
-        throw new UnsupportedOperationException();
+        
     }
 
     
@@ -279,11 +298,21 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief  It uses the protective shield and returns its energy. To do this, 
+    * the power of the shield is multiplied by the enhancing factors provided by
+    * all the shield enhancers available.
+    * @return the energy of the protective shield
     */
     float protection () {
-        throw new UnsupportedOperationException();
+        float factor = 1;
+        Iterator<ShieldBooster> it = shieldBoosters.iterator();
+         
+        while (it.hasNext()) {
+            ShieldBooster s = it.next();
+            factor *= s.useIt();
+        }
+        
+        return shieldPower*factor;
     }
     
     /**
@@ -310,11 +339,13 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
-    * @return WeaponToUI
+    * @brief  performs operations related to receiving the impact of an enemy shot.
+    * This involves decreasing the power os the shield depending on the energy 
+    * of the shot received as a parameter.
+    * @param shot energy of the shot
+    * @return  the result of whether the shot has been resisted or not
     */
     ShotResult receiveShot (float shot) {
-        throw new UnsupportedOperationException();
     }
     
     /**
@@ -341,11 +372,13 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
+    * @brief for earch element that indicates the loot (passed as a parameter) 
+    * CardDealer is asked for an element of that type and it tries to store 
+    * using the receive method.For medals, their number is simply increased 
+    * according to what the loot indicates.
     * @return WeaponToUI
     */
     void setLoot (Loot loot) {
-        throw new UnsupportedOperationException();
     }
     
     /**
