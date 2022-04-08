@@ -1,6 +1,6 @@
 #encoding:utf-8
 
-module DeepSpace
+module Deepspace
 
 # 19.4.17 - Translation from Java
 # @author Profe

@@ -20,7 +20,7 @@ module DeepSpace
         end
 
         # Copy constructor
-        def self.newCopy (sw)
+        def self.newCopy (w)
             new(w.name, w.type, w.uses)
         end
 

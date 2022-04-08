@@ -1,13 +1,13 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 require_relative 'GameCharacter'
 
 # Dice
 # It takes all random decisions in the game, based on a set of probabilities
 
-module DeepSpace
+module Deepspace
 
     class Dice 
 

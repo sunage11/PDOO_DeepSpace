@@ -1,12 +1,12 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 2 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # Damage
 # It represents the damage that an enemy starship makes to a
 # spacial station when it loses a combat
 
-module DeepSpace
+module Deepspace
 
     class Damage
 

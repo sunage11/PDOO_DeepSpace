@@ -2,7 +2,7 @@
 
 require_relative 'GameState'
 
-module DeepSpace
+module Deepspace
 
 # 7.4.17 - Translation from Java
 # @author Profe
