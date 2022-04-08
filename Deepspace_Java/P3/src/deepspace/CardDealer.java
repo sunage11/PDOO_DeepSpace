@@ -148,6 +148,9 @@ class CardDealer {
         hangars.add(new Hangar(2));
         hangars.add(new Hangar(1));
         hangars.add(new Hangar(1));
+        
+        // My Hangar
+        hangars.add(new Hangar(5));
     }
     private void createEnemies() {
         Loot regularLoot0=new Loot(1,2,1,1,1);
@@ -216,7 +219,10 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));  
+        
+        // My  card
+        enemies.add(new EnemyStarShip ("Mi enemigo", 400, 400, goodLoot, regularSpecificDamage0));
     }
 }
 
