@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # Weapon
 # It represents a spacial station's weapon
@@ -8,7 +8,7 @@
 
 require_relative 'WeaponToUI'
 
-module DeepSpace
+module Deepspace
 
     class Weapon 
 

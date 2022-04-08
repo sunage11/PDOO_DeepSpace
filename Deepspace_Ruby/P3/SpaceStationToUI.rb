@@ -1,5 +1,5 @@
 
-module DeepSpace
+module Deepspace
 
 
 # 5.4.17 - Translation from Java

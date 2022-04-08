@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # EnemyStarShip
 # It represents 
@@ -10,7 +10,7 @@ require_relative 'Loot'
 require_relative 'EnemyToUI'
 require_relative 'ShotResult'
 
-module DeepSpace
+module Deepspace
 
     class EnemyStarShip
        

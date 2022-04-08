@@ -1,11 +1,11 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 2 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # SpaceStation
 # 
 
-module DeepSpace
+module Deepspace
 
     class SpaceStation
 

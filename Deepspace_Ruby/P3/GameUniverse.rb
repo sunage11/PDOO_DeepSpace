@@ -1,13 +1,13 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 2 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # GameUniverse
 # 
 
 require_relative 'GameStateController'
 
-module DeepSpace
+module Deepspace
 
     class GameUniverse
 

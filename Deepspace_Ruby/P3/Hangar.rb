@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # Hangar
 # It represents 
@@ -10,7 +10,7 @@ require_relative 'Weapon'
 require_relative 'ShieldBooster'
 require_relative 'WeaponType'
 
-module DeepSpace
+module Deepspace
     class Hangar
 
         #Constructor

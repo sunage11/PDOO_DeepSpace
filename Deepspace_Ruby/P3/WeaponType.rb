@@ -1,11 +1,11 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # WeaponType
 # It represents the types of weapons
 
-module DeepSpace
+module Deepspace
     module WeaponType
         
         class Type 

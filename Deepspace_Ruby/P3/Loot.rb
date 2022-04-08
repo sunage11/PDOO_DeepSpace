@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 1 DeepSpace
+# 2º DGIIM - PDOO - Practice 3 DeepSpace
 
 # Loot
 # It represents the loot that a station can get if it beats an enemy starship
@@ -8,7 +8,7 @@
 
 require_relative 'LootToUI'
 
-module DeepSpace
+module Deepspace
 
         class Loot 
 
