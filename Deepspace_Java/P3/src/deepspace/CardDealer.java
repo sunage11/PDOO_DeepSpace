@@ -84,6 +84,11 @@ class CardDealer {
         suppliesPackages.add(new SuppliesPackage(3,50,3));    
         suppliesPackages.add(new SuppliesPackage(40,100,40));
         suppliesPackages.add(new SuppliesPackage(100,100,100));
+        
+        //La nueva carta
+        suppliesPackages.add(new SuppliesPackage(3.14f,3.14f,3.14f));
+        
+        
     }
     private void createWeapons() {
        weapons.add(new Weapon("Láser infinito",WeaponType.LASER,100));
@@ -110,7 +115,11 @@ class CardDealer {
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
-       weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2));       
+       weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2));  
+       
+       //La nueva carta
+       weapons.add(new Weapon("Super cañón",WeaponType.PLASMA,50));  
+       
        
     }
     private void createShieldBoosters() {
@@ -125,6 +134,9 @@ class CardDealer {
        shieldBoosters.add(new ShieldBooster("Escudo ACME",1.5f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",3.0f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",4.0f,2));
+       
+       //La nueva carta
+       shieldBoosters.add(new ShieldBooster("Escudo megaprotector",50.0f,50));
     }
     private void createHangars() {
         hangars.add(new Hangar(4));

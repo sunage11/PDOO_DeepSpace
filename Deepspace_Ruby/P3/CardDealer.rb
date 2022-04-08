@@ -75,6 +75,9 @@ class CardDealer
         @suppliesPackages.add(SuppliesPackage.new(3,50,3))  
         @suppliesPackages.add(SuppliesPackage.new(40,100,40))
         @suppliesPackages.add(SuppliesPackage.new(100,100,100))
+
+        #La nueva carta
+        @suppliesPackages.add(SuppliesPackage.new(3.14,3.14,3.14));
     end
     
     def createWeapons() 
@@ -102,7 +105,10 @@ class CardDealer
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
-       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))       
+       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))  
+       
+       #La nueva carta
+       weapons.add(Weapon.new("Super cañón",WeaponType.PLASMA,50));  
        
     end
     
@@ -118,6 +124,9 @@ class CardDealer
        @shieldBoosters.add(ShieldBooster.new("Escudo ACME",1.5,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",3.0,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",4.0,2))
+
+       #La nueva carta
+       shieldBoosters.add(ShieldBooster.new("Escudo megaprotector",50.0f,50)
     end
                                
     def createHangars() 
