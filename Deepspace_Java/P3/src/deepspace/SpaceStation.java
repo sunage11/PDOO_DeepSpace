@@ -100,8 +100,10 @@ public class SpaceStation {
     }
     
     /**
-    * @brief 
-    * @param 
+    * @brief an attempt is made to discard the shield booster with index i from 
+    * the current shield booster pool. In addition to losing the shield boost, 
+    * it updates the pending damage if there is any
+    * @param i index of the shield
     */
     void discardShieldBooster (int i) {
         throw new UnsupportedOperationException();
@@ -118,17 +120,17 @@ public class SpaceStation {
     }
     
     /**
-    * @brief Copy constructor
-    * @param d another Damage instance
+    * @brief It tries to discard the weapon i of the array weapons. Apart from
+    * losing the weapon, it should update the pendingDamage if there is any.
+    * @param i index of the weapon
     */
     void discardWeapon (int i) {
         throw new UnsupportedOperationException();
     }
     
     /**
-    * @brief If a hangar is available, it is requested to discard the weapon 
-    * with index i.
-    * @param i index
+    * @brief 
+    * @param i index of the 
     */
     void discardWeaponInHangar (int i) {
         if(hangar!=null)
@@ -141,7 +143,16 @@ public class SpaceStation {
     * @param d another Damage instance
     */
     float fire () {
-        throw new UnsupportedOperationException();
+
+        float factor = 1;
+        Iterator<Weapon> it = weapons.iterator();
+         
+        while (it.hasNext()) {
+            Weapon w = it.next();
+            factor *= w.useIt();
+        }
+        
+        return ammoPower*factor;
     }
 
     
@@ -314,7 +325,17 @@ public class SpaceStation {
     * @return WeaponToUI
     */
     ShotResult receiveShot (float shot) {
-        throw new UnsupportedOperationException();
+        
+        float myProtection = protection();
+        
+        if (myProtection >= shot) {
+            shieldPower -= SHIELDLOSSPERUNITSHOT*shot;
+            shieldPower = Float.max(0.0f, shieldPower);
+            return ShotResult.RESIST;
+        } else {
+            shieldPower = 0.0f;
+            return ShotResult.DONOTRESIST;
+        }
     }
     
     /**
@@ -345,7 +366,35 @@ public class SpaceStation {
     * @return WeaponToUI
     */
     void setLoot (Loot loot) {
-        throw new UnsupportedOperationException();
+        CardDealer dealer = CardDealer.getInstance();
+       
+        int h = loot.getNHangars();   
+        if (h>0) {
+            Hangar hangar = dealer.nextHangar();
+            receiveHangar(hangar);
+        }
+        
+        int elements = loot.getNSupplies();
+        for (int i=1; i<=elements; i++) {
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            receiveSupplies(sup);
+        }
+        
+        elements = loot.getNWeapons();
+        for (int i=1; i<=elements; i++) {
+            Weapon weap = dealer.nextWeapon();
+            receiveWeapon(weap);
+        }
+        
+        elements = loot.getNShields();
+        for (int i=1; i<=elements; i++) {
+            ShieldBooster sh = dealer.nextShieldBooster();
+            receiveShieldBooster(sh);
+        }
+        
+        int medals = loot.getNMedals();
+        nMedals+=medals;
+        
     }
     
     /**
