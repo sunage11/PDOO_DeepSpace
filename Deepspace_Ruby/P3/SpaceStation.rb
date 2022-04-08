@@ -98,7 +98,14 @@ module Deepspace
 
         # --
         def fire
-            # next session
+            factor = 1
+
+            weapons.each do |w|
+                factor*=w.useIt
+            end
+
+            return ammoPower*factor
+
         end
 
         # calculates the speed of the station
@@ -146,7 +153,13 @@ module Deepspace
 
         #Builds a new WeaponToUI object from *this
         def protection
-            #Se hace en la práctica 3
+            factor = 1
+
+            shieldBoosters.each do |s|
+                factor*=s.useIt
+            end
+
+            return shieldPower*factor
         end
 
         #If *this has not hangar, param h is the new hangar. If *this already 
@@ -169,7 +182,17 @@ module Deepspace
 
         
         def receiveShot (shot)
-            #Se hace en la práctica 3
+            
+            myProtection=protection
+
+            if(myProtection >= shot)
+                @shieldPower-= @SHIELDLOSSPERUNITSHOT*shot 
+                @shieldPower = [0.0, @shieldPower].max
+                return ShotResult::RESIST 
+            else
+                @shieldPower=0.0
+                return ShotResult::DONOTRESIST
+            end
         end
         
         #Increments ammoPower, shieldPower and fuelUnits 
@@ -190,7 +213,36 @@ module Deepspace
         end
 
         def setLoot (loot)
-            #Se hace en la práctica 3
+            dealer= CardDealer.instance # o Instance
+
+            h=loot.nHangars
+
+            if(h>0)
+                hangar = dealer.nextHangar
+                receiveHangar(hangar)
+            end
+
+            elements= loot.nSupplies
+            elements.times do 
+                sup = dealer.nextSuppliesPackage
+                receiveSupplies(sup)
+            end
+
+            elements = loot.nWeapons
+            elements.times do
+                weap = dealer.nextWeapon
+                receiveWeapon(weap)
+            end
+
+            elements = loot.nShields
+            elements.times do
+                sh = dealer.nextShieldBooster
+                receiveShieldBooster(sh)
+            end
+
+            medals = loot.nMedals
+            @nMedals+=medals
+
         end
 
         #Calculates the adjusted damage from param d to the weapon and shield
