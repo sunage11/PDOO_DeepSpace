@@ -27,12 +27,72 @@ module Deepspace
             @currentEnemy = nil
         end
         
-        #Se hace en la práctica 3
+        #A combat between the space station and the enemy that are received
+        #as parameters takes place. The procedure described in the rules of the 
+        # game is followed: draw for who shoots first, possibility of escape, 
+        # allocation of loot, recording of pending damage, etc. 
+        # The result of the combat is returned.
+        
         def combatGo (station, enemy) #Dos métodos en Ruby no pueden tener el mismo nombre 
+            ch=@dice.firstShot
+            fire
+            result
+            enemyWins
+            combatResult
+
+            if(ch == GameCharacter::ENEMYSTARSHIP)
+                fire = enemy.fire
+                result = station.receiveShot(fire)
+                if(result == ShotResult::RESIST)
+                    fire = station.fire
+                    result = enemy.receiveShot(fire)
+                    enemyWins = (result==ShotResult::RESIT)
+                else
+                    enemyWins = true
+                end
+            else
+                fire=station.fire
+                result=enemy.receiveShot(fire)
+                enemyWins=(result==ShotResult::RESIST)
+            end
+
+            if(enemyWins)
+                s = station.speed
+                moves = @dice.spaceStationMoves(s)
+
+                if(moves)
+                    damage = enemy.Damage
+                    station.setPendingDamage(damage)
+                    combatResult = CombatResult::ENEMYWINS
+                else
+                    station.move
+                    combatResult = CombatResult::STATIONESCAPES
+                end 
+
+            else
+                aLoot=enemy.loot
+                station.setLoot(aLoot)
+                combatResult = CombatResult::STATIONWINS
+            end
+
+            @gameState.next(@turns,@spaceStations.size)
+
+            return combatResult
+
+
         end
 
         #Se hace en la práctica 3
         def combat
+
+            state = @gameState.state
+
+            if(state == GameState::BEFORECOMBAT || state == GameState::INIT)
+                return combatGo(@currentStation, @currentEnemy)
+            else
+                return CombatResult::NOCOMBAT
+            end
+
         end
 
         #discards hangar of the current station if gameState is INIT or 
