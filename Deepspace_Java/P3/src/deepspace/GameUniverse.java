@@ -35,11 +35,78 @@ public class GameUniverse {
     }
     
     /**
-    * @brief  
-    * @return 
+    * @brief A combat between the space station and the enemy that are received
+    * as parameters takes place. The procedure described in the rules of the 
+    * game is followed: draw for who shoots first, possibility of escape, 
+    * allocation of loot, recording of pending damage, etc. 
+    * The result of the combat is returned.
+    * @param station SpaceStation to fight
+    * @param enemy EneyStarship to fight
+    * @return combat result
     */
     CombatResult combat(SpaceStation station, EnemyStarShip enemy){
-        throw new UnsupportedOperationException();
+        
+        GameCharacter ch = dice.firstShot();
+        
+        float fire;
+        ShotResult result;
+        boolean enemyWins;
+        CombatResult combatResult;
+        
+        if (ch == GameCharacter.ENEMYSTARSHIP) {
+            
+            fire = enemy.fire();
+            result = station.receiveShot(fire);
+            
+            if (result == ShotResult.RESIST) {
+                
+                fire = station.fire();
+                result = enemy.receiveShot(fire);
+                
+                enemyWins = (result==ShotResult.RESIST);                
+            
+            } else {
+                enemyWins = true;
+            }
+            
+        } else {
+            
+            fire = station.fire();
+            result = enemy.receiveShot(fire);
+            enemyWins = (result==ShotResult.RESIST); 
+        }
+        
+        
+        if (enemyWins) {
+            
+            float s = station.getSpeed();
+            boolean moves = dice.spaceStationMoves(s);
+            
+            if (moves) {
+                
+                Damage damage = enemy.getDamage();
+                station.setPendingDamage(damage);
+                
+                combatResult = CombatResult.ENEMYWINS;
+ 
+            } else {
+                
+                station.move();
+                combatResult = CombatResult.STATIONESCAPES;
+            }
+            
+        } else {
+            
+            Loot aLoot = enemy.getLoot();
+            station.setLoot(aLoot);
+            combatResult = CombatResult.STATIONWINS;
+        }
+        
+        
+        gameState.next(turns, spaceStations.size());
+        
+        return combatResult; 
+        
     }
     
     /**
@@ -47,7 +114,13 @@ public class GameUniverse {
     * @return 
     */
     CombatResult combat(){
-        throw new UnsupportedOperationException();
+        
+        GameState state = gameState.getState();
+        
+        if (state == GameState.BEFORECOMBAT || state == GameState.INIT) 
+            return combat (currentStation, currentEnemy);
+        else
+            return CombatResult.NOCOMBAT;
     }
     
     /**
@@ -132,8 +205,40 @@ public class GameUniverse {
     * @brief  
     * @return 
     */
-    void init(String[] names){
-        throw new UnsupportedOperationException();
+    void init(ArrayList<String> names){
+        
+        GameState state = gameState.getState();
+        
+        if (state==GameState.CANNOTPLAY) {
+            
+            spaceStations = new ArrayList<>();
+            CardDealer dealer = CardDealer.getInstance();
+            
+            int size = names.size();
+            for (int i=0; i<size; i++) {
+                
+                SuppliesPackage supplies = dealer.nextSuppliesPackage();
+                SpaceStation station = new SpaceStation (names.get(i), supplies);
+                spaceStations.add(station);
+                
+                int nh = dice.initWithNHangars();
+                int nw = dice.initWithNWeapons();
+                int ns = dice.initWithNShields();
+                
+                Loot lo = new Loot (0, nw, ns, nh, 0);
+                station.setLoot(lo);
+                
+            }
+            
+            int currentStationIndex = dice.whoStarts(size);
+            currentStation = spaceStations.get(currentStationIndex);
+            
+            currentEnemy = dealer.nextEnemy();
+            
+            gameState.next(turns, size);
+     
+        }   
+        
     }
     
     /**
@@ -161,7 +266,36 @@ public class GameUniverse {
     * @return 
     */
     boolean nextTurn(){
-        throw new UnsupportedOperationException();
+        
+        GameState state = gameState.getState();
+        
+        if (state == GameState.AFTERCOMBAT) {
+            
+            boolean stationState = currentStation.validState();
+            
+            if (stationState) {
+                
+                int size = spaceStations.size();
+                
+                currentStationIndex = (currentStationIndex+1) % size;
+                turns++;
+                
+                currentStation = spaceStations.get(currentStationIndex);
+                currentStation.cleanUpMountedItems();
+                
+                CardDealer dealer = CardDealer.getInstance();
+                
+                currentEnemy = dealer.nextEnemy();
+                
+                gameState.next(turns, size);
+                
+                return true;
+            }
+            
+            return false;
+        }
+        
+        return false;
     }
     
     /**
