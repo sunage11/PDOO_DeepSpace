@@ -94,7 +94,31 @@ module Deepspace
         end
 
         def init (names)
-            # P3
+            if (@gameState.state == GameState::CANNOTPLAY)
+                
+                @spaceStations = Array.new
+                dealer = CardDealer.instance
+
+                size = names.length
+                
+                names.each do |name|
+                    supplies = dealer.nextSuppliesPackage
+                    station = SpaceStation.new(name, supplies)
+                    @spaceStations << station
+
+                    nh = @dice.initWithNHangars()
+                    nw = @dice.initWithNWeapons()
+                    ns = @dice.initWithNShields()
+
+                    lo = Loot.new(0, nw, ns, nh, 0)
+                    station.setLoot(lo)
+                end
+
+                @currentStationIndex = @dice.whoStarts(size)
+                @currentStation = @spaceStation.at(@currentStationIndex)
+
+                @currentEnemy = dealer.nextEnemy
+                @gameState.next(turns, size)
         end
 
         #If the game state is INIT or AFTERCOMBAT, the  current space 
@@ -116,7 +140,31 @@ module Deepspace
         end
 
         def nextTurn 
-            #Siguiente practica
+            if (@gameState.state == GameState::AFTERCOMBAT)
+                if (@currentStation.validState)
+                    size = @spaceStations.length
+
+                    @currentStationIndex = (@currentStationIndex+1)%size
+                    @turns += 1
+
+                    @currentStation = @spaceStation.at(@currentStationIndex)
+                    @currentStation.cleanUpMountedItems
+
+                    dealer = CardDealer.instance
+
+                    @currentEnemy = dealer.nextEnemy
+
+                    @gameState.next(@turns, @size)
+
+                    return true
+                end
+
+                return false
+
+            end
+
+            return false
+
         end
 
     end

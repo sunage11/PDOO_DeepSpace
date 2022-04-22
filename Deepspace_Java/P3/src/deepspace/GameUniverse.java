@@ -230,7 +230,7 @@ public class GameUniverse {
                 
             }
             
-            int currentStationIndex = dice.whoStarts(size);
+            currentStationIndex = dice.whoStarts(size);
             currentStation = spaceStations.get(currentStationIndex);
             
             currentEnemy = dealer.nextEnemy();
