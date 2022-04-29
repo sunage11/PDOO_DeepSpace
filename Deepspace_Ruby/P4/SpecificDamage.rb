@@ -39,7 +39,7 @@ module Deepspace
 
         public
         def adjust (w, s)
-            shields = [@nShields, s.length].min 
+            shields = super(s)
 
                 aux = []
                 aux2 = w.clone
@@ -67,7 +67,7 @@ module Deepspace
 
         # returns true if *this does not imply any accessory loss
         def hasNoEffect
-            return ( (@nShields==0) && (@weapons.empty?))
+            return ( super && (@weapons.empty?))
         end
 
         #toString
