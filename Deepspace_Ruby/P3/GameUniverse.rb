@@ -148,7 +148,7 @@ module Deepspace
 
         # builds a new GameUniverseToUI object from self
         def getUIversion
-            GameUniverseToUI.new(@currentStation, @currentEnemy)
+           return GameUniverseToUI.new(@currentStation, @currentEnemy)
         end
 
         #It returns true if the current space station has the number of 
@@ -162,7 +162,7 @@ module Deepspace
         end
 
         def init (names)
-            if (@gameState.state == GameState::CANNOTPLAY)
+            if (state == GameState::CANNOTPLAY)
                 
                 @spaceStations = Array.new
                 dealer = CardDealer.instance
@@ -187,6 +187,11 @@ module Deepspace
 
                 @currentEnemy = dealer.nextEnemy
                 @gameState.next(@turns, @spaceStations.length)
+            else
+                puts "Unexpected gamestate at GameUniverse.init()"
+                puts "The game state is #{state}"
+                puts "Nothing is done!"
+        
             end
         end
 
