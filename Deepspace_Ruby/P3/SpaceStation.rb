@@ -188,7 +188,7 @@ module Deepspace
         #has hangar, this method does not operate
         def receiveHangar (h)
             if(@hangar == nil)
-                @hangar = Hangar.newCopy(h)
+                @hangar = h
             end
         end
 
