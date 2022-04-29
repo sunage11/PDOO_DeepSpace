@@ -5,9 +5,9 @@
 # GameUniverse
 # 
 
-require_relative 'GameUniverseToUI'
-require_relative 'Dice'
 require_relative 'GameStateController'
+require_relative 'Dice'
+require_relative 'GameUniverseToUI'
 require_relative 'SpaceStation'
 require_relative 'EnemyStarShip'
 require_relative 'GameStateController'
@@ -29,22 +29,21 @@ module Deepspace
         def initialize 
             @gameState= GameStateController.new
             @turns = 0
-            @dice = Dice.new
+            @dice=Dice.new
             @currentStation = nil
             @currentStationIndex = -1
             @spaceStations = Array.new
             @currentEnemy = nil
         end
         
-        #A combat between the space station and the enemy that are received
-        #as parameters takes place. The procedure described in the rules of the 
+        # A combat between the space station and the enemy that are received
+        # as parameters takes place. The procedure described in the rules of the 
         # game is followed: draw for who shoots first, possibility of escape, 
         # allocation of loot, recording of pending damage, etc. 
         # The result of the combat is returned.
         
         def combatGo (station, enemy) #Dos métodos en Ruby no pueden tener el mismo nombre 
             ch=@dice.firstShot
-            
 
             if(ch == GameCharacter::ENEMYSTARSHIP)
                 fire = enemy.fire
@@ -67,7 +66,7 @@ module Deepspace
                 moves = @dice.spaceStationMoves(s)
 
                 if(moves)
-                    damage = enemy.Damage
+                    damage = enemy.d amage
                     station.setPendingDamage(damage)
                     combatResult = CombatResult::ENEMYWINS
                 else
@@ -88,7 +87,7 @@ module Deepspace
         end
 
         def state
-            return @gameState.state
+            @gameState.state 
         end
 
         #Se hace en la práctica 3
@@ -149,7 +148,7 @@ module Deepspace
 
         # builds a new GameUniverseToUI object from self
         def getUIversion
-            return GameUniverseToUI.new(@currentStation,@currentEnemy)
+            GameUniverseToUI.new(@currentStation, @currentEnemy)
         end
 
         #It returns true if the current space station has the number of 
@@ -217,7 +216,7 @@ module Deepspace
                     @currentStationIndex = (@currentStationIndex+1)%size
                     @turns += 1
 
-                    @currentStation = @spaceStations[@currentStationIndex]
+                    @currentStation = @spaceStations.at(@currentStationIndex)
                     @currentStation.cleanUpMountedItems
 
                     dealer = CardDealer.instance

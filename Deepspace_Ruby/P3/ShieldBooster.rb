@@ -20,7 +20,7 @@ module Deepspace
 
         # Copy constructor
         def self.newCopy (s)
-            return(s.clone)
+            return s.clone
         end
 
         # Getters
