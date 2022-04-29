@@ -19,6 +19,7 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     private GameStateController gameState;
+    boolean haveSpaceCity;
     
     /**
     * @brief Constructor
@@ -33,6 +34,10 @@ public class GameUniverse {
         currentStationIndex=-1;
 
     }
+    
+    void createSpaceCity(){}
+    
+    void makeStationEfficient(){}
     
     /**
     * @brief A combat between the space station and the enemy that are received

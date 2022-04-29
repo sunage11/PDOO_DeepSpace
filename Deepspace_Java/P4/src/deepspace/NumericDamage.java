@@ -91,4 +91,9 @@ public class NumericDamage extends Damage{
         return output;
     }
     
+    @Override
+    NumericDamageToUI getUIversion(){
+        return new NumericDamageToUI(this);
+    }
+    
 }

@@ -126,10 +126,16 @@ public class SpecificDamage extends Damage{
     */
     public String toString () {
         
-        String output = "Damage [ nShields " + nShields 
+        String output = "Damage [ nShields " + getNShields() 
                         + " ; weapons " + weapons.toString() + " ]";
         
         return output;
     }
     
+    
+    
+    @Override
+    SpecificDamageToUI getUIversion(){
+        return new SpecificDamageToUI(this);
+    }
 }
