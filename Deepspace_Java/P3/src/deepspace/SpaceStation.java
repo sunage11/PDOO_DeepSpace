@@ -74,33 +74,11 @@ public class SpaceStation {
     * any use left.
     */
     void cleanUpMountedItems () {
-        
-        /*Iterator<Weapon> it = weapons.iterator();
-        Iterator<ShieldBooster> it2 = shieldBoosters.iterator();
-        
-        while(it.hasNext()){
-            Weapon aux = it.next();
-            if(aux.getUses() == 0)
-                weapons.remove(aux);
-        }
-        
-        while(it2.hasNext()){
-            ShieldBooster aux2 = it2.next();
-            if(aux2.getUses() == 0)
-                shieldBoosters.remove(aux2);
-        }*/
-        
+   
         weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
         
         shieldBoosters = new ArrayList<>(shieldBoosters.stream().filter(shieldBooster -> shieldBooster.getUses() > 0).collect(Collectors.toList()));
-        
-         //weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
-        
-        //shieldBoosters = new ArrayList<>(shieldBoosters.stream().filter(shieldBooster -> shieldBooster.getUses() > 0).collect(Collectors.toList()));
-    //}
-    //import java.util.stream.collectors
-        
-        
+   
     }
     
     /**
@@ -207,7 +185,7 @@ public class SpaceStation {
     * @brief Getter with package visibility
     * @return Hangar instance
     */
-    Hangar getHangar () {
+    public Hangar getHangar () {
         Hangar output = new Hangar (hangar);
         return output;
     }
@@ -232,7 +210,7 @@ public class SpaceStation {
     * @brief Getter with package visibility
     * @return pendingDamage instance
     */
-    Damage getPendingDamage () {
+    public Damage getPendingDamage () {
         Damage output = new Damage (pendingDamage);
         return output;
     }

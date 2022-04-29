@@ -5,7 +5,16 @@
 # GameUniverse
 # 
 
+require_relative 'GameUniverseToUI'
+require_relative 'Dice'
 require_relative 'GameStateController'
+require_relative 'SpaceStation'
+require_relative 'EnemyStarShip'
+require_relative 'GameStateController'
+require_relative 'Loot'
+require_relative 'CombatResult'
+require_relative 'ShotResult'
+require_relative 'CardDealer'
 
 module Deepspace
 
@@ -35,10 +44,7 @@ module Deepspace
         
         def combatGo (station, enemy) #Dos métodos en Ruby no pueden tener el mismo nombre 
             ch=@dice.firstShot
-            fire
-            result
-            enemyWins
-            combatResult
+            
 
             if(ch == GameCharacter::ENEMYSTARSHIP)
                 fire = enemy.fire
@@ -79,6 +85,10 @@ module Deepspace
 
             return combatResult
 
+        end
+
+        def state
+            return @gameState.state
         end
 
         #Se hace en la práctica 3
@@ -138,14 +148,14 @@ module Deepspace
         end
 
         # builds a new GameUniverseToUI object from self
-        def getUIVersion
-            GameUniverseToUI.new(self)
+        def getUIversion
+            return GameUniverseToUI.new(@currentStation,@currentEnemy)
         end
 
         #It returns true if the current space station has the number of 
         #medals needed to win.
         def haveAWinner
-            if (currentStation.nMedals == WIN)
+            if (@currentStation.nMedals == @@WIN)
                 return true
             else
                 return false
@@ -174,10 +184,10 @@ module Deepspace
                 end
 
                 @currentStationIndex = @dice.whoStarts(size)
-                @currentStation = @spaceStation.at(@currentStationIndex)
+                @currentStation = @spaceStations[@currentStationIndex]
 
                 @currentEnemy = dealer.nextEnemy
-                @gameState.next(turns, size)
+                @gameState.next(@turns, @spaceStations.length)
             end
         end
 
@@ -207,14 +217,14 @@ module Deepspace
                     @currentStationIndex = (@currentStationIndex+1)%size
                     @turns += 1
 
-                    @currentStation = @spaceStation.at(@currentStationIndex)
+                    @currentStation = @spaceStations[@currentStationIndex]
                     @currentStation.cleanUpMountedItems
 
                     dealer = CardDealer.instance
 
                     @currentEnemy = dealer.nextEnemy
 
-                    @gameState.next(@turns, @size)
+                    @gameState.next(@turns, size)
 
                     return true
                 end

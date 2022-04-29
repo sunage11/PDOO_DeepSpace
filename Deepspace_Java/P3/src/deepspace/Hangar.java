@@ -32,8 +32,8 @@ public class Hangar{
     Hangar (Hangar h){
         
         maxElements = h.maxElements;
-        shieldBoosters = new ArrayList <ShieldBooster> (h.shieldBoosters);
-        weapons = new ArrayList <Weapon> (h.weapons);
+        shieldBoosters = new ArrayList <> (h.shieldBoosters);
+        weapons = new ArrayList <> (h.weapons);
     }
     
     /**

@@ -37,10 +37,12 @@ module Deepspace
 
         # returns the shoot energy level of the enemy ship
         def fire
+            return @ammoPower
         end
 
         # returns the shield energy level of the enemy ship
         def protection
+            return @shieldPower
         end
 
         # returns the result of a received shot with a specific power

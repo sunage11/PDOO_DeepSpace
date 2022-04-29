@@ -136,8 +136,8 @@ module Deepspace
         end
 
         # builds a new WeaponToUI object from self
-        def getUIVersion
-            SpaceStationToUI.new(self)
+        def getUIversion
+            return SpaceStationToUI.new(self)
         end
 
         # It tries to mount the booster with the index i inside the hangar. If 
@@ -204,9 +204,8 @@ module Deepspace
 
         
         def receiveShot (shot)
+            myProtection=protection()
             
-            myProtection=protection
-
             if(myProtection >= shot)
                 @shieldPower-= @SHIELDLOSSPERUNITSHOT*shot 
                 @shieldPower = [0.0, @shieldPower].max

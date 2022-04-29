@@ -108,7 +108,7 @@ class CardDealer
        @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))  
        
        #La nueva carta
-       @weapons.add(Weapon.new("Super cañón",WeaponType.PLASMA,50));  
+       @weapons.add(Weapon.new("Super cañón",WeaponType::PLASMA,50));  
        
     end
     

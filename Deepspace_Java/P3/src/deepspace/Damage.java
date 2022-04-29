@@ -42,9 +42,9 @@ public class Damage {
     * @param d another Damage instance
     */
     Damage (Damage d) {
-        this.nWeapons = d.getNWeapons();
-        this.nShields = d.getNShields();
-        this.weapons = new ArrayList<WeaponType>(d.weapons);         
+        this.nWeapons = d.nWeapons;
+        this.nShields = d.nShields;
+        this.weapons = new ArrayList<>(d.weapons);         
     }
     
     /**
