@@ -85,8 +85,6 @@ module Deepspace
             end
         end
 
-            
-        end
 
         # If a hangar is available, it is requested to discard the booster 
         # with index i
@@ -284,7 +282,3 @@ module Deepspace
 
     end
 end
-
-
-        
-

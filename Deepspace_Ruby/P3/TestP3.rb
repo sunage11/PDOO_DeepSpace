@@ -1,12 +1,12 @@
 #encoding:utf-8
 
-require_relative '../lib/CardDealer'
-require_relative '../lib/SpaceStation'
-require_relative '../lib/SuppliesPackage'
-require_relative '../lib/Loot'
-require_relative '../lib/Damage'
-require_relative '../lib/GameUniverse'
-require_relative '../lib/CombatResult'
+require_relative 'CardDealer'
+require_relative 'SpaceStation'
+require_relative 'SuppliesPackage'
+require_relative 'Loot'
+require_relative 'Damage'
+require_relative 'GameUniverse'
+require_relative 'CombatResult'
 
 #Class for test main program for third practice
 #
