@@ -79,7 +79,6 @@ module Deepspace
 
             return combatResult
 
-
         end
 
         #Se hace en la práctica 3
@@ -179,6 +178,7 @@ module Deepspace
 
                 @currentEnemy = dealer.nextEnemy
                 @gameState.next(turns, size)
+            end
         end
 
         #If the game state is INIT or AFTERCOMBAT, the  current space 

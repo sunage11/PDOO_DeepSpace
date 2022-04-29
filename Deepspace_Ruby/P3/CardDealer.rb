@@ -108,7 +108,7 @@ class CardDealer
        @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))  
        
        #La nueva carta
-       weapons.add(Weapon.new("Super cañón",WeaponType.PLASMA,50));  
+       @weapons.add(Weapon.new("Super cañón",WeaponType.PLASMA,50));  
        
     end
     
@@ -126,7 +126,7 @@ class CardDealer
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",4.0,2))
 
        #La nueva carta
-       shieldBoosters.add(ShieldBooster.new("Escudo megaprotector",50.0f,50)
+       @shieldBoosters.add(ShieldBooster.new("Escudo megaprotector",50.0,50))
     end
                                
     def createHangars() 
@@ -141,7 +141,7 @@ class CardDealer
         @hangars.add(Hangar.new(1))
 
         # My Hangar
-        hangars.add(Hangar.new(5));
+        @hangars.add(Hangar.new(5));
     end
     
     def createEnemies() 
@@ -195,7 +195,7 @@ class CardDealer
         @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));
         
         # My  card
-        enemies.add(EnemyStarShip.new("Mi enemigo", 400, 400, goodLoot, regularSpecificDamage0));              
+        @enemies.add(EnemyStarShip.new("Mi enemigo", 400, 400, goodLoot, regularSpecificDamage0));              
     end
 end # class
 
