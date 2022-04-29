@@ -8,6 +8,8 @@ package deepspace;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import java.util.stream.Collectors;
+
 /**
  *
  * @author sunage
@@ -73,7 +75,7 @@ public class SpaceStation {
     */
     void cleanUpMountedItems () {
         
-        Iterator<Weapon> it = weapons.iterator();
+        /*Iterator<Weapon> it = weapons.iterator();
         Iterator<ShieldBooster> it2 = shieldBoosters.iterator();
         
         while(it.hasNext()){
@@ -86,7 +88,11 @@ public class SpaceStation {
             ShieldBooster aux2 = it2.next();
             if(aux2.getUses() == 0)
                 shieldBoosters.remove(aux2);
-        }
+        }*/
+        
+        weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
+        
+        shieldBoosters = new ArrayList<>(shieldBoosters.stream().filter(shieldBooster -> shieldBooster.getUses() > 0).collect(Collectors.toList()));
         
          //weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
         
