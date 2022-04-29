@@ -88,6 +88,12 @@ public class SpaceStation {
                 shieldBoosters.remove(aux2);
         }
         
+         //weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
+        
+        //shieldBoosters = new ArrayList<>(shieldBoosters.stream().filter(shieldBooster -> shieldBooster.getUses() > 0).collect(Collectors.toList()));
+    //}
+    //import java.util.stream.collectors
+        
         
     }
     

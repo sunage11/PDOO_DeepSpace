@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/ShotResult.java</file>
+            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/CombatResult.java</file>
+            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/controller/Controller.java</file>
             <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/Weapon.java</file>
-            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/ShieldBooster.java</file>
+            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/TestP3.java</file>
+            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/main/PlayWithUI.java</file>
             <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/CardDealer.java</file>
-            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/SuppliesPackage.java</file>
             <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/SpaceStation.java</file>
-            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/Damage.java</file>
+            <file>file:/home/clara/Escritorio/PDOO/PDOO_DeepSpace/Deepspace_Java/P3/src/deepspace/GameUniverse.java</file>
         </group>
     </open-files>
 </project-private>

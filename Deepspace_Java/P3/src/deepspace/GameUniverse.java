@@ -23,7 +23,7 @@ public class GameUniverse {
     /**
     * @brief Constructor
     */
-    GameUniverse (){
+    public GameUniverse (){
         gameState = new GameStateController();
         turns = 0;
         dice = new Dice();
@@ -113,7 +113,7 @@ public class GameUniverse {
     * @brief  
     * @return 
     */
-    CombatResult combat(){
+    public CombatResult combat(){
         
         GameState state = gameState.getState();
         
@@ -127,7 +127,7 @@ public class GameUniverse {
     * @brief discards hangar of the current station if gameState is INIT or 
     * AFTERCOMBAT
     */
-    void discardHangar(){
+    public void discardHangar(){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.discardHangar();
@@ -137,7 +137,7 @@ public class GameUniverse {
     * @brief discards shield booster i of the current station if gameState is 
     * INIT or AFTERCOMBAT
     */
-    void discardShieldBooster(int i){
+    public void discardShieldBooster(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.discardShieldBooster(i);
@@ -147,7 +147,7 @@ public class GameUniverse {
     * @brief discards shield booster i of the current station's hangar if 
     * gameState is INIT or AFTERCOMBAT
     */
-    void discardShieldBoosterInHangar(int i){
+    public void discardShieldBoosterInHangar(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.discardShieldBoosterInHangar(i);
@@ -156,7 +156,7 @@ public class GameUniverse {
     /**
     * @brief discards weapon i of the current station if gameState is INIT or AFTERCOMBAT
     */
-    void discardWeapon(int i){
+    public void discardWeapon(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.discardWeapon(i);
@@ -166,7 +166,7 @@ public class GameUniverse {
     * @brief discards weapon i of the current station's hangar if 
     * gameState is INIT or AFTERCOMBAT
     */
-    void discardWeaponInHangar(int i){
+    public void discardWeaponInHangar(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.discardWeaponInHangar(i);
@@ -177,7 +177,7 @@ public class GameUniverse {
     * @brief  getter with package visibility
     * @return gameState state
     */
-    GameState getState(){
+    public GameState getState(){
         return gameState.getState();
     }
     
@@ -185,7 +185,7 @@ public class GameUniverse {
     * @brief builds a new GameUniverseToUI object from currentEnemy and currentStation
     * @return GameUniverseToUI
     */
-    GameUniverseToUI getUIversion(){
+    public GameUniverseToUI getUIversion(){
         return new GameUniverseToUI (currentStation,currentEnemy);
     }
     
@@ -194,7 +194,7 @@ public class GameUniverse {
     * medals needed to win.
     * @return true if medals is equal to WIN. Otherwise, it is false.
     */
-    boolean haveAWinner(){
+    public boolean haveAWinner(){
         if(currentStation.getNMedals() == WIN)
             return true;
         else
@@ -205,7 +205,7 @@ public class GameUniverse {
     * @brief  
     * @return 
     */
-    void init(ArrayList<String> names){
+    public void init(ArrayList<String> names){
         
         GameState state = gameState.getState();
         
@@ -245,7 +245,7 @@ public class GameUniverse {
     * @brief If the game state is INIT or AFTERCOMBAT, the  current space 
     * station calls its own method mountShieldBooster. Otherwise, it has no effect.
     */
-    void mountShieldBooster(int i){
+    public void mountShieldBooster(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.mountShieldBooster(i);
@@ -255,7 +255,7 @@ public class GameUniverse {
     * @brief  If the game state is INIT or AFTERCOMBAT, the  current space 
     * station calls its own method mountWeapon. Otherwise, it has no effect.
     */
-    void mountWeapon(int i){
+    public void mountWeapon(int i){
         if (gameState.getState() == GameState.AFTERCOMBAT || 
                 gameState.getState() == GameState.INIT)
             currentStation.mountWeapon(i);
@@ -265,7 +265,7 @@ public class GameUniverse {
     * @brief  
     * @return 
     */
-    boolean nextTurn(){
+    public boolean nextTurn(){
         
         GameState state = gameState.getState();
         
