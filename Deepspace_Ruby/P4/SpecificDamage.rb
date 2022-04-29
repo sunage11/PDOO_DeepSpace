@@ -1,36 +1,85 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
-# WeaponType
-# It represents the types of weapons
+# SpecificDamage
 
 module Deepspace
-    module WeaponType
+    module SpecificDamage
         
-        class Type 
+        attr_reader :weapons
 
-            # Constructor
-            def initialize (p, n)
-                @power=p
-                @name=n
-            end
-
-            # Getter
-            def power
-                @power
-            end
-
-            # To string
-            def to_s
-                return "#{@name}"
-            end
-            
+            #Constructor
+        def initialize(w,s,ws)
+            super(s)
+            @weapons = ws.clone
         end
-        
-        LASER   = Type.new(2.0, "LASER")
-        MISSILE = Type.new(3.0, "MISSILE")
-        PLASMA  = Type.new(4.0, "PLASMA")
+
+        # Getter
+        def copy
+            return self.clone
+        end
+
+        private
+        def arrayContainsType (w, t)
+            
+            pos=0;
+
+            w.each do |aux|
+                if(aux.type == t)
+                    return pos
+                else
+                    pos+=1
+                end
+            end
+
+            return -1
+
+        end
+
+        public
+        def adjust (w, s)
+            shields = [@nShields, s.length].min 
+
+                aux = []
+                aux2 = w.clone
+
+                weapons.each do |element|
+                    i = arrayContainsType(aux2, element)
+                    if i != -1
+                        aux2.delete_at(i)
+                        aux.push(element)
+                    end
+                end
+                output = SpecificDamage.new(aux, shields)
+                return output
+            end
+        end
+
+        # If *this has w.getType() in the array weapons, it deletes that element
+        # of the array. In other case, it decrements nWeapons in one unit
+        def discardWeapon (w)
+            if (@weapons.empty?)
+                @weapons.delete(w.getType) 
+                
+            end
+        end
+
+        # returns true if *this does not imply any accessory loss
+        def hasNoEffect
+            return ( (@nShields==0) && (@weapons.empty?))
+        end
+
+        #toString
+        def to_s
+            output = "Damage [ nShields #{@nShields} ; " +
+                     "weapons  #{@weapons.to_s} ]"
+        end
+
+        def getUIversion
+            SpecificDamage.new(self)
+        end
+
 
     end
 end
