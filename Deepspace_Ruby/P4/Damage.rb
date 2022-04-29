@@ -6,97 +6,26 @@
 # It represents the damage that an enemy starship makes to a
 # spacial station when it loses a combat
 
+require_relative 'DamageToUI'
+
 module Deepspace
 
     class Damage
 
-        attr_reader :nShields, :nWeapons, :weapons
+        attr_reader :nShields
         
         #Constructor
-        def initialize(w,s,ws)
+        def initialize(s)
             @nShields = s
-            @nWeapons = w
-            @weapons = ws.clone
         end
 
-        # nWeapons constructor -> numeric damage
-
-        def self.newNumericWeapons(w, s)
-            self.new(w,s,[])
-        end
-
-        # WeaponType constructor -> specific damage 
-        def self.newSpecificWeapons(w,s)
-
-
-            return self.new(-1,s,w)
-        end
-
-        # Copy constructor
-        def self.newCopy(d)
-            return d.clone
-        end
-
-
-        # builds a new DamageToUI object from *this
-        def getUIversion
-            DamageToUI.new(self)
-        end
-        
-        # ----
-        private
-        def arrayContainsType (w, t)
-            
-            pos=0;
-
-            w.each do |aux|
-                if(aux.type == t)
-                    return pos
-                else
-                    pos+=1
-                end
-            end
-
-            return -1
-
-        end
 
         # returns a an adjusted version of *this. It takes into consideration
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
         public
-        def adjust (w, s)
-            shields = [@nShields, s.length].min 
-
-            # If it is numeric damage
-            if (@nWeapons != -1)
-                output = Damage.newNumericWeapons([@nWeapons, w.length].min, shields)
-                return output
-            else
-                aux = []
-                aux2 = w.clone
-
-                weapons.each do |element|
-                    i = arrayContainsType(aux2, element)
-                    if i != -1
-                        aux2.delete_at(i)
-                        aux.push(element)
-                    end
-                end
-                output = Damage.newSpecificWeapons(aux, shields)
-                return output
-            end
-        end
-      
-
-        # If *this has w.getType() in the array weapons, it deletes that element
-        # of the array. In other case, it decrements nWeapons in one unit
-        def discardWeapon (w)
-            if (@weapons.delete(w) == nil)
-                if (@nWeapons>0)
-                    @nWeapons -= 1
-                end
-            end
+        def adjust (s)
+            [@nShields, s.length].min 
         end
 
         # it decrements nShields in one unit
@@ -108,14 +37,7 @@ module Deepspace
 
         # returns true if *this does not imply any accessory loss
         def hasNoEffect
-            return ((@nWeapons==0) && (@nShields==0) && (@weapons.empty?))
-        end
-
-        #toString
-        def to_s
-            output = "Damage [ nShields #{@nShields} ; " +
-                     "nWeapons #{@nWeapons} ; " +
-                     "weapons  #{@weapons.to_s} ]"
+            return (@nShields==0)
         end
 
     end

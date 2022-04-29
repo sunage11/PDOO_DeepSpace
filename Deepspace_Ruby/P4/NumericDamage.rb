@@ -1,36 +1,66 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
-# WeaponType
-# It represents the types of weapons
+# NumericDamage
+# It represents numeric damage
+
+require_relative 'Damage'
+require_relative 'NumericDamageToUI'
 
 module Deepspace
-    module WeaponType
-        
-        class Type 
+      
+    class NumericDamage < Damage 
 
-            # Constructor
-            def initialize (p, n)
-                @power=p
-                @name=n
-            end
+        attr_reader :nWeapons
 
-            # Getter
-            def power
-                @power
-            end
-
-            # To string
-            def to_s
-                return "#{@name}"
-            end
-            
+        # Constructor
+        def initialize (w,s)
+            super(s)
+            @nWeapons = w
         end
-        
-        LASER   = Type.new(2.0, "LASER")
-        MISSILE = Type.new(3.0, "MISSILE")
-        PLASMA  = Type.new(4.0, "PLASMA")
 
+        #copy
+        def copy
+            return self.clone
+        end
+
+        #adjust
+        def adjust (w, s)
+            shields = super(s)
+            output = NumericDamage.new([@nWeapons, w.length].min, shields)
+            return output
+        end
+
+        # If *this has w.getType() in the array weapons, it deletes that element
+        # of the array. In other case, it decrements nWeapons in one unit
+        def discardWeapon (w)
+            if (@nWeapons>0)
+                @nWeapons -= 1
+            end
+        end
+
+        # returns true if *this does not imply any accessory loss
+        def hasNoEffect
+            return ((@nWeapons==0) && super)
+        end
+
+        # Getter
+        def power
+            @power
+        end
+
+        #toString
+        def to_s
+            output = "Damage [ nShields #{@nShields} ; " +
+                    "nWeapons #{@nWeapons} ]"
+        end
+
+        #getUIversion
+        def getUIversion
+            return NumericDamage.new(self)
+        end
+            
     end
+
 end
