@@ -235,7 +235,7 @@ public class GameUniverse {
             
             currentEnemy = dealer.nextEnemy();
             
-            gameState.next(turns, size);
+            gameState.next(turns, spaceStations.size());
      
         }   
         

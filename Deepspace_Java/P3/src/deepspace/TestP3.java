@@ -38,7 +38,7 @@ public class TestP3 {
             System.out.println();
             
             station_test.setLoot(loot);
-            System.out.println("After adding the loot the station is: ");
+            System.out.println("After adding a the loot the station is: ");
             System.out.println(station_test);
             System.out.println();
             

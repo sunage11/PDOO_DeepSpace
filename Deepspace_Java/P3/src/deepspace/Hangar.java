@@ -116,10 +116,8 @@ public class Hangar{
     */
     ShieldBooster removeShieldBooster (int s){
         
-        if (shieldBoosters.size() > s) {
-            ShieldBooster output = shieldBoosters.get(s);
-            shieldBoosters.remove(s);
-            return output;
+        if (s>=0 && shieldBoosters.size() > s) {
+            return shieldBoosters.remove(s);
         } else {
             return null;
         }
@@ -134,10 +132,8 @@ public class Hangar{
     */
     Weapon removeWeapon(int w){
         
-        if (weapons.size() > w) {
-            Weapon output = weapons.get(w);
-            weapons.remove(w);
-            return output;
+        if (w>=0 && weapons.size() > w) {
+           return  weapons.remove(w);
         } else {
             return null;
         }

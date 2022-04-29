@@ -74,11 +74,11 @@ public class SpaceStation {
     * any use left.
     */
     void cleanUpMountedItems () {
-   
+        
         weapons = new ArrayList<>(weapons.stream().filter(weapon -> weapon.getUses() > 0).collect(Collectors.toList()));
         
         shieldBoosters = new ArrayList<>(shieldBoosters.stream().filter(shieldBooster -> shieldBooster.getUses() > 0).collect(Collectors.toList()));
-   
+                
     }
     
     /**
@@ -185,9 +185,8 @@ public class SpaceStation {
     * @brief Getter with package visibility
     * @return Hangar instance
     */
-    public Hangar getHangar () {
-        Hangar output = new Hangar (hangar);
-        return output;
+    Hangar getHangar () {
+        return hangar;
     }
     
     /**
@@ -210,9 +209,8 @@ public class SpaceStation {
     * @brief Getter with package visibility
     * @return pendingDamage instance
     */
-    public Damage getPendingDamage () {
-        Damage output = new Damage (pendingDamage);
-        return output;
+    Damage getPendingDamage () {
+        return pendingDamage;
     }
     
     /**

@@ -32,7 +32,7 @@ public class Damage {
     * @brief WeaponType constructor -> specific damage
     */
     Damage (ArrayList<WeaponType> w, int s) {
-        this.weapons = new ArrayList<WeaponType>(w);
+        this.weapons = new ArrayList<>(w);
         this.nShields = s;
         this.nWeapons = -1;        
     }
@@ -42,8 +42,8 @@ public class Damage {
     * @param d another Damage instance
     */
     Damage (Damage d) {
-        this.nWeapons = d.nWeapons;
-        this.nShields = d.nShields;
+        this.nWeapons = d.getNWeapons();
+        this.nShields = d.getNShields();
         this.weapons = new ArrayList<>(d.weapons);         
     }
     
