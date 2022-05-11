@@ -1,15 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * @author BOLÍVAR PELÁEZ, CLARA
+ * @author RUIZ GÓMEZ, SOLEDAD
+ * 2º DGIIM - PDOO - Practice 4 DeepSpace
  */
 package deepspace;
 
 /**
- *
+ * INTERFAZ SPACE FIGHTER
  * @author clara
  */
-public class SpaceFighter {
+public interface SpaceFighter {
     
-    float
+    // Shoots
+    public float fire();
+    
+    // Protects
+    public float protection();
+    
+    // Receives shot
+    public ShotResult receiveShot (float shot); 
     
 }
