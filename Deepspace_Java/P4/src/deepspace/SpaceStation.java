@@ -50,6 +50,39 @@ public class SpaceStation {
     }
     
     /**
+    * @brief Constructor
+    * @param other instance od spaceStation
+    */
+    
+    SpaceStation (SpaceStation other){
+        ammoPower = other.getAmmoPower();
+        fuelUnits = other.getFuelUnits();
+        shieldPower = other.getShieldPower();
+        name = other.getName();
+        nMedals = other.getNMedals();
+        if (other.getPendingDamage()!=null)
+            pendingDamage= other.getPendingDamage();
+        else
+            pendingDamage=null;
+        
+        if (other.getHangar()!=null)
+            hangar= other.getHangar();
+        else
+            hangar=null;
+        
+        if (other.getWeapons()!=null)
+            weapons= other.getWeapons();
+        else
+            weapons = new ArrayList<>();
+        
+        if (other.getShieldBoosters()!=null)
+            shieldBoosters= other.getShieldBoosters();
+        else
+            shieldBoosters = new ArrayList<>();
+    }
+    
+    
+    /**
     * @brief Set the amount of fuel to the value passed without ever 
     * exceeding the limit.
     * @param f value 

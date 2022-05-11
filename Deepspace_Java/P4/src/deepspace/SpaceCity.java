@@ -9,6 +9,6 @@ package deepspace;
  *
  * @author clara
  */
-public class SpaceCity {
+public class SpaceCity extends SpaceStation{
     
 }
