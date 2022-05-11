@@ -5,10 +5,24 @@
  */
 package deepspace;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author clara
  */
-public class SpaceCity extends SpaceStation{
+public class SpaceCity extends SpaceStation {
+    
+    private SpaceStation base;
+    private ArrayList<SpaceStation> collaborators;
+    
+    SpaceCity (SpaceStation b, ArrayList<SpaceStation> c) {
+        super(b);
+        base = b;
+        collaborators = new ArrayList<> (c);
+    }
+    
+    
+  }
     
 }
