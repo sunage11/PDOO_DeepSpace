@@ -388,7 +388,7 @@ public class SpaceStation {
     * according to what the loot indicates.
     * @return WeaponToUI
     */
-    void setLoot (Loot loot) {
+    Transformation setLoot (Loot loot) {
 
         CardDealer dealer = CardDealer.getInstance();
        
@@ -418,6 +418,16 @@ public class SpaceStation {
         
         int medals = loot.getNMedals();
         nMedals+=medals;
+        
+        if(loot.getEfficient()){
+           return Transformation.GETEFFICIENT;
+       }
+       else if(loot.spaceCity()){
+           return Transformation.SPACECITY;
+       }
+       else{
+           return Transformation.NOTRANSFORM;
+       }
         
     }
     
