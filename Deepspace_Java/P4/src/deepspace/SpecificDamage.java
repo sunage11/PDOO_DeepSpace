@@ -70,7 +70,8 @@ public class SpecificDamage extends Damage{
     @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
         
-        int shields = super.adjust(sb);
+        int shields = Integer.min(sb.size(), getNShields());
+  
         
         ArrayList<WeaponType> aux = new ArrayList <> ();
         ArrayList<Weapon> aux2 = new ArrayList <> (w);

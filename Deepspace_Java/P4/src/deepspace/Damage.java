@@ -48,9 +48,8 @@ abstract class Damage {
     * @param sb ArrayList of shield boosters
     * @return modifies version of *this
     */
-     public int adjust (ArrayList<ShieldBooster> sb) {
-         return Integer.min(getNShields(), sb.size());
-     }
+     public abstract Damage adjust (ArrayList<Weapon> w,ArrayList<ShieldBooster> sb);
+     
     
     /**
     * @brief If *this has w.getType() in the array weapons, it deletes that element

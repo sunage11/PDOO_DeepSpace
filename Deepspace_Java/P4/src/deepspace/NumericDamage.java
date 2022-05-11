@@ -43,7 +43,7 @@ public class NumericDamage extends Damage{
     */
     @Override 
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
-        int shields = super.adjust(sb);
+        int shields = Integer.min(sb.size(), getNShields());
         NumericDamage output = new NumericDamage (Integer.min (nWeapons, w.size()), shields);
         return output;
         
