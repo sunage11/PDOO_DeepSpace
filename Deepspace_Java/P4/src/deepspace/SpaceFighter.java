@@ -10,4 +10,6 @@ package deepspace;
  */
 public class SpaceFighter {
     
+    float
+    
 }

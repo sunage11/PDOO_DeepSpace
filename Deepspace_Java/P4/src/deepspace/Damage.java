@@ -35,9 +35,7 @@ abstract class Damage {
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    DamageToUI getUIversion () {
-        return new DamageToUI (this);
-    }
+    abstract DamageToUI getUIversion();
     
 
     

@@ -58,7 +58,7 @@ module Deepspace
 
         #getUIversion
         def getUIversion
-            return NumericDamage.new(self)
+            return NumericDamageToUI.new(self)
         end
             
     end
