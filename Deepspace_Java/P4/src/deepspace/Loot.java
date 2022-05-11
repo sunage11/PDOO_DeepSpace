@@ -16,17 +16,21 @@ public class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
+    boolean getEfficient;
+    boolean spaceCity;
     
     
     /**
     * @brief Constructor
     */
-    Loot (int s, int w, int sh, int h, int m) {
+    Loot (int s, int w, int sh, int h, int m, boolean city, boolean ef) {
         this.nSupplies = s;
         this.nWeapons  = w;
         this.nShields  = sh;
         this.nHangars  = h;
         this.nMedals   = m;
+        this.spaceCity = city;
+        this.getEfficient = ef;
     }
     
      /**
@@ -39,6 +43,24 @@ public class Loot {
         this.nHangars  = e.getNHangars();
         this.nMedals   = e.getNMedals();
     }
+    
+    /**
+    * @brief Getter with package visibility
+    * @return getEfficient value
+    */
+    boolean getEfficient () {
+        return getEfficient;
+    }
+    
+    /**
+    * @brief Getter with package visibility
+    * @return spaceCity value
+    */
+    boolean spaceCity () {
+        return spaceCity;
+    }
+    
+    
     
     /**
     * @brief Getter with package visibility

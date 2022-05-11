@@ -5,14 +5,19 @@
 # SpecificDamage
 
 module Deepspace
-    module SpecificDamage
+    class SpecificDamage < Damage 
         
         attr_reader :weapons
 
             #Constructor
-        def initialize(w,s,ws)
+        def initialize(s,ws)
             super(s)
-            @weapons = ws.clone
+            if !ws.nil?
+                 @weapons = ws.clone
+            else
+                @weapons = []
+            end
+
         end
 
         # Getter
@@ -59,8 +64,10 @@ module Deepspace
         # If *this has w.getType() in the array weapons, it deletes that element
         # of the array. In other case, it decrements nWeapons in one unit
         def discardWeapon (w)
-            if (@weapons.empty?)
-                @weapons.delete(w.getType) 
+            if (!@weapons.empty?)
+                pos= @weapons.index(w.type)
+                if (pos!=nil)
+                    @weapons.delete_at(pos) 
                 
             end
         end
@@ -77,7 +84,7 @@ module Deepspace
         end
 
         def getUIversion
-            SpecificDamage.new(self)
+            SpecificDamageToUI.new(self)
         end
 
 
