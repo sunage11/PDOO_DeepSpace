@@ -35,9 +35,7 @@ abstract class Damage {
     * @brief builds a new DamageToUI object from *this
     * @return DamageToUI
     */
-    DamageToUI getUIversion () {
-        return new DamageToUI (this);
-    }
+    abstract DamageToUI getUIversion ();
     
 
     
@@ -49,7 +47,9 @@ abstract class Damage {
     * @param sb ArrayList of shield boosters
     * @return modifies version of *this
     */
-     public abstract Damage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb);
+     public int adjust (ArrayList<ShieldBooster> sb) {
+         return Integer.min(getNShields(), sb.size());
+     }
     
     /**
     * @brief If *this has w.getType() in the array weapons, it deletes that element
@@ -72,7 +72,9 @@ abstract class Damage {
     * @brief returns true if *this does not imply any accessory loss
     * @return true if *this damage has no effect
     */
-    public abstract boolean hasNoEffect ();
+    public boolean hasNoEffect () {
+        return nShields==0;
+    }
     
     /**
     * @brief builds a new DamageToUI object from *this

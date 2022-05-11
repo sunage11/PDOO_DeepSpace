@@ -41,9 +41,9 @@ public class NumericDamage extends Damage{
     * @param sb ArrayList of shield boosters
     * @return modifies version of *this
     */
-    @Override
+    @Override 
     public NumericDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
-        int shields = Integer.min(getNShields(), sb.size());
+        int shields = super.adjust(sb);
         NumericDamage output = new NumericDamage (Integer.min (nWeapons, w.size()), shields);
         return output;
         
@@ -68,7 +68,7 @@ public class NumericDamage extends Damage{
     */
     @Override
     public boolean hasNoEffect () {
-        return ((nWeapons==0) && (getNShields()==0));
+        return ((nWeapons==0) && super.hasNoEffect());
     }
     
     /**
@@ -91,9 +91,12 @@ public class NumericDamage extends Damage{
         return output;
     }
     
-    @Override
-    NumericDamageToUI getUIversion(){
-        return new NumericDamageToUI(this);
+    /**
+    * @brief builds a new NumericDamageToUI object from *this
+    * @return NumericDamageToUI
+    */
+    NumericDamageToUI getUIversion (){
+        return new NumericDamageToUI (this);
     }
     
 }

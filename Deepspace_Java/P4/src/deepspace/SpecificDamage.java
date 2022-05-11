@@ -70,7 +70,7 @@ public class SpecificDamage extends Damage{
     @Override
     public SpecificDamage adjust (ArrayList<Weapon> w, ArrayList<ShieldBooster> sb) {
         
-        int shields = Integer.min(getNShields(), sb.size());
+        int shields = super.adjust(sb);
         
         ArrayList<WeaponType> aux = new ArrayList <> ();
         ArrayList<Weapon> aux2 = new ArrayList <> (w);
@@ -108,7 +108,7 @@ public class SpecificDamage extends Damage{
     */
     @Override
     public boolean hasNoEffect () {
-        return ((getNShields()==0) && (weapons.isEmpty()));
+        return (super.hasNoEffect() && (weapons.isEmpty()));
     }
     
     /**
@@ -132,10 +132,12 @@ public class SpecificDamage extends Damage{
         return output;
     }
     
-    
-    
-    @Override
-    SpecificDamageToUI getUIversion(){
-        return new SpecificDamageToUI(this);
+    /**
+    * @brief builds a new SpecificDamageToUI object from *this
+    * @return SpecificDamageToUI
+    */
+    SpecificDamageToUI getUIversion (){
+        return new SpecificDamageToUI (this);
     }
+    
 }
