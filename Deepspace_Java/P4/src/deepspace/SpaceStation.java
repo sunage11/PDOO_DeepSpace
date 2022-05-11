@@ -273,7 +273,7 @@ public class SpaceStation {
     }
     
     /**
-    * @brief builds a new WeaponToUI object from *this
+    * @brief builds a new SpaceStationToUI object from *this
     * @return WeaponToUI
     */
     SpaceStationToUI getUIversion () {
