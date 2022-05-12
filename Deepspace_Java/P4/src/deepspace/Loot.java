@@ -16,9 +16,23 @@ public class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
-    boolean getEfficient;
-    boolean spaceCity;
+    private boolean getEfficient;
+    private boolean spaceCity;
     
+    
+    
+    /**
+    * @brief Constructor
+    */
+    Loot (int s, int w, int sh, int h, int m) {
+        this.nSupplies = s;
+        this.nWeapons  = w;
+        this.nShields  = sh;
+        this.nHangars  = h;
+        this.nMedals   = m;
+        this.spaceCity = false;
+        this.getEfficient = false;
+    }
     
     /**
     * @brief Constructor

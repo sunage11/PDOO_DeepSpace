@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  *
  * @author sunage
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter {
     
     private final int MAXFUEL = 100; //Shield units that are lost for each 
     //unit of firing power received.
@@ -184,7 +184,7 @@ public class SpaceStation {
     * firing power is multiplied by the enhancing factors provided by all weapons.
     * @return its energy or power
     */
-    float fire () {
+    public float fire () {
 
         float factor = 1;
         Iterator<Weapon> it = weapons.iterator();
@@ -335,7 +335,7 @@ public class SpaceStation {
     * all the shield enhancers available.
     * @return the energy of the protective shield
     */
-    float protection () {
+    public float protection () {
         float factor = 1;
         Iterator<ShieldBooster> it = shieldBoosters.iterator();
          
@@ -377,7 +377,7 @@ public class SpaceStation {
     * @param shot energy of the shot
     * @return  the result of whether the shot has been resisted or not
     */
-    ShotResult receiveShot (float shot) {
+    public ShotResult receiveShot (float shot) {
         
         float myProtection = protection();
         

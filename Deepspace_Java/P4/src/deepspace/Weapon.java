@@ -9,7 +9,7 @@ package deepspace;
  * @title Weapon
  * @brief It represents a spacial station's weapons
  */
-public class Weapon {
+public class Weapon implements CombatElement{
     
     private String      name;
     private WeaponType  type;
@@ -46,7 +46,7 @@ public class Weapon {
     * @brief Getter with package visibility
     * @return uses value
     */
-    int getUses () {
+    public int getUses () {
         return uses;
     }
     
@@ -63,7 +63,7 @@ public class Weapon {
     * or 1.0 otherwise
     * @return boost value or 1.0
     */
-    float useIt () {
+    public float useIt () {
         if (uses > 0) {
             uses--;
             return this.power();

@@ -10,4 +10,4 @@ package deepspace;
  * @brief It represents all the possible results from a combat between a spacial
  * station and a enemy starship
  */
-public enum CombatResult { ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS }
+public enum CombatResult { ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS, STATIONWINSANDCONVERTS }
