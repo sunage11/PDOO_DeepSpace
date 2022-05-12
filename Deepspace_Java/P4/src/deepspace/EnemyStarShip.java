@@ -9,7 +9,7 @@ package deepspace;
  * @title Hangar
  * @brief 
  */
-public class EnemyStarShip{
+public class EnemyStarShip implements SpaceFighter {
     private float ammoPower;
     private String name;
     private float shieldPower;
@@ -20,22 +20,22 @@ public class EnemyStarShip{
     * @brief Constructor
     */
     EnemyStarShip (String n, float a, float s, Loot l, Damage d){
-        name=n;
-        ammoPower=a;
-        shieldPower=s;
-        loot=l;
-        damage = new Damage(d);
+        name = n;
+        ammoPower = a;
+        shieldPower = s;
+        loot = l;
+        damage = d;
     }
     
     /**
     * @brief Copy constructor
     */
     EnemyStarShip (EnemyStarShip e){
-        name=e.name;
-        ammoPower=e.ammoPower;
-        shieldPower= e.shieldPower;
+        name = e.name;
+        ammoPower = e.ammoPower;
+        shieldPower = e.shieldPower;
         loot = e.loot;
-        damage = new Damage(e.damage);
+        damage = e.damage;
     }
     
     /**
@@ -51,7 +51,7 @@ public class EnemyStarShip{
     * @brief returns the shoot energy level of the enemy ship
     * @return ammoPower
     */
-    float fire(){
+    public float fire(){
         return ammoPower;
     }
     
@@ -68,7 +68,7 @@ public class EnemyStarShip{
     * @return damage value
     */
     Damage getDamage(){
-        Damage output = new Damage (damage);
+        Damage output = damage;
         return output;
     }
     
@@ -102,7 +102,7 @@ public class EnemyStarShip{
     * @brief  returns the shield energy level of the enemy ship
     * @return shieldPower
     */
-    float protection(){
+    public float protection(){
         return shieldPower;
     }
     
@@ -111,7 +111,7 @@ public class EnemyStarShip{
     * @param shot power of the shot
     * @return the result of the shot
     */
-    ShotResult receiveShot (float shot){
+    public ShotResult receiveShot (float shot){
         if (shot > shieldPower)
             return ShotResult.DONOTRESIST;
         else 

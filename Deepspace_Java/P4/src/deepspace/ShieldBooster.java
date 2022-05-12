@@ -9,7 +9,7 @@ package deepspace;
  * @title ShieldBooster
  * @brief It represents a spacial station's shield booster
  */
-public class ShieldBooster {
+public class ShieldBooster implements CombatElement {
     
     private String name;
     private float  boost;
@@ -46,7 +46,7 @@ public class ShieldBooster {
     * @brief Getter with package visibility
     * @return uses value
     */
-    int getUses () {
+    public int getUses () {
         return uses;
     }
     
@@ -55,7 +55,7 @@ public class ShieldBooster {
     * or 1.0 otherwise
     * @return boost value or 1.0
     */
-    float useIt () {
+    public float useIt () {
         if (uses > 0) {
             uses--;
             return boost;

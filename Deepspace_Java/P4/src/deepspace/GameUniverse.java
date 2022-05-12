@@ -19,7 +19,7 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     private GameStateController gameState;
-    boolean haveSpaceCity;
+    private boolean haveSpaceCity;
     
     /**
     * @brief Constructor
@@ -32,12 +32,27 @@ public class GameUniverse {
         spaceStations = new ArrayList<>();
         currentEnemy = null;
         currentStationIndex=-1;
-
+        haveSpaceCity=false;
     }
     
-    void createSpaceCity(){}
+    void createSpaceCity () {
+        if(haveSpaceCity==false){
+            ArrayList<SpaceStation> collaborators = new ArrayList<> (spaceStations);
+            collaborators.remove(currentStation);
+            currentStation = new SpaceCity(currentStation, collaborators);
+            spaceStations.set(currentStationIndex, currentStation);
+            haveSpaceCity = true;        
+        }
+    }
     
-    void makeStationEfficient(){}
+    void makeStationEfficient () {
+        if (dice.extraEfficiency())
+            currentStation = new BetaPowerEfficientSpaceStation (currentStation);
+        else
+            currentStation = new PowerEfficientSpaceStation (currentStation);
+        
+        spaceStations.set(currentStationIndex, currentStation);
+    }
     
     /**
     * @brief A combat between the space station and the enemy that are received
@@ -103,8 +118,16 @@ public class GameUniverse {
         } else {
             
             Loot aLoot = enemy.getLoot();
-            station.setLoot(aLoot);
-            combatResult = CombatResult.STATIONWINS;
+            Transformation transformation = station.setLoot(aLoot);
+            
+            if (transformation == Transformation.GETEFFICIENT) {
+                makeStationEfficient();
+                combatResult = CombatResult.STATIONWINSANDCONVERTS;
+            } else if (transformation == Transformation.SPACECITY) {
+                createSpaceCity();
+                combatResult = CombatResult.STATIONWINSANDCONVERTS;
+            } else 
+                combatResult = CombatResult.STATIONWINS;
         }
         
         

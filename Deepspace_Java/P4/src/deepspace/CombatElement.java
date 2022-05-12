@@ -5,9 +5,15 @@
 package deepspace;
 
 /**
- *
+ * INTERFAZ COMBATELEMENT
  * @author clara
  */
-public class CombatElement {
+public interface CombatElement {
+    
+    // getUses
+    public int getUses();
+    
+    // useIt
+    public float useIt();
     
 }
