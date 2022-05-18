@@ -50,10 +50,8 @@ module Deepspace
         end
 
          #toString
-         def to_s
-            output = "ShieldBooster [ name #{@name} ; " +
-                     "boost #{@boost} ; " +
-                     "uses  #{@uses} ]"
+        def to_s
+            return getUIversion().to_s
         end
         
 

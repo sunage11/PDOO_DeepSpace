@@ -34,6 +34,7 @@ module Deepspace
             @currentStationIndex = -1
             @spaceStations = Array.new
             @currentEnemy = nil
+            @haveSpaceCity = false
         end
         
         # A combat between the space station and the enemy that are received
@@ -76,8 +77,19 @@ module Deepspace
 
             else
                 aLoot=enemy.loot
-                station.setLoot(aLoot)
-                combatResult = CombatResult::STATIONWINS
+                transformation = station.setLoot(aLoot)
+
+                if (transformation == Transformation::GETEFFICIENT)
+                    makeStationEfficient
+                    combatResult = CombatResult::STATIONWINSANDCONVERTS
+
+                elsif (transformation == Transformation::SPACECITY)
+                    createSpaceCity
+                    combatResult = CombatResult::STATIONWINSANDCONVERTS
+                
+                else
+                    combatResult = CombatResult::STATIONWINS
+
             end
 
             @gameState.next(@turns,@spaceStations.size)
@@ -90,7 +102,7 @@ module Deepspace
             @gameState.state 
         end
 
-        #Se hace en la práctica 3
+        # method
         def combat
 
             state = @gameState.state
@@ -213,6 +225,7 @@ module Deepspace
             end        
         end
 
+        # method
         def nextTurn 
             if (@gameState.state == GameState::AFTERCOMBAT)
                 if (@currentStation.validState)
@@ -239,6 +252,34 @@ module Deepspace
 
             return false
 
+        end
+
+        # method
+        def createSpaceCity 
+            if (!@haveSpaceCity)
+                @haveSpaceCity = true
+                collaborators = Array.new(@spaceStations)
+                collaborators.delete(@currentStation)
+
+                @currentStation = SpaceCity.new(@currentStation, collaborators)
+                @spaceStations[@currentStationIndex] = @currentStation
+            end
+        end
+
+        # method
+        def makeStationEfficient
+            if (@dice.extraEfficiency)
+                @currentStation = BetaPowerEfficientStation.new(@currentStation)
+            else
+                @currentStation = PowerEfficientStation.new(@currentStation)
+            end
+
+            @spaceStations[@currentStationIndex] = @currentStation
+        end
+
+        # to_s
+        def to_s
+            return getUIversion().to_s
         end
 
     end
