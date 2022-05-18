@@ -12,7 +12,7 @@ package deepspace;
  */
 public class PowerEfficientSpaceStation extends SpaceStation {
     
-    private final float EFFICIENCYFACTOR=1.10f;
+    private static final float EFFICIENCYFACTOR=1.10f;
     
     PowerEfficientSpaceStation (SpaceStation station){
         super(station);
