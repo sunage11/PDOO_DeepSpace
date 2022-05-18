@@ -250,11 +250,11 @@ public class TestsP4 {
     
     
     public static void main(String[] args){
-        //testNumericDamage();
-        //testSpecificDamage();
-        //testSpaceCity();
-        //testPowerEfficientStation();
-        //testBetaPowerEfficientStation();
+        testNumericDamage();
+        testSpecificDamage();
+        testSpaceCity();
+        testPowerEfficientStation();
+        testBetaPowerEfficientStation();
     }
     
 }
