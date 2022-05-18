@@ -50,6 +50,11 @@ abstract class Damage {
     */
      public abstract Damage adjust (ArrayList<Weapon> w,ArrayList<ShieldBooster> sb);
      
+     //
+     public int adjustShields (ArrayList<ShieldBooster> sb) {
+         return Integer.min(sb.size(), getNShields());
+     }
+     
     
     /**
     * @brief If *this has w.getType() in the array weapons, it deletes that element

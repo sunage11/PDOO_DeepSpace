@@ -10,7 +10,7 @@ package deepspace;
  * @brief It represents the damage that an enemy starship makes to a
  * spacial station when it loses a combat
  */
-public class PowerEfficientSpaceStation extends SpaceStation{
+public class PowerEfficientSpaceStation extends SpaceStation {
     
     private final float EFFICIENCYFACTOR=1.10f;
     
@@ -19,12 +19,12 @@ public class PowerEfficientSpaceStation extends SpaceStation{
     }
     
     @Override
-    float fire(){
+    public float fire(){
         return super.fire()*EFFICIENCYFACTOR;
     }
     
     @Override
-    float protection(){
+    public float protection(){
         return super.protection()*EFFICIENCYFACTOR;
     }
     
