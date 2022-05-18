@@ -54,7 +54,6 @@ public class NumericDamage extends Damage{
     * @brief If *this has w.getType() in the array weapons, it deletes that element
     * of the array. In other case, it decrements nWeapons in one unit
     * @param w weapon which type is to be deleted
-    * @return void
     */
     @Override
     public void discardWeapon (Weapon w) {
@@ -83,6 +82,7 @@ public class NumericDamage extends Damage{
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "Damage [ nShields " + getNShields() 
@@ -95,6 +95,7 @@ public class NumericDamage extends Damage{
     * @brief builds a new NumericDamageToUI object from *this
     * @return NumericDamageToUI
     */
+    @Override
     NumericDamageToUI getUIversion (){
         return new NumericDamageToUI (this);
     }

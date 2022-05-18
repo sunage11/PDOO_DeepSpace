@@ -51,6 +51,7 @@ public class EnemyStarShip implements SpaceFighter {
     * @brief returns the shoot energy level of the enemy ship
     * @return ammoPower
     */
+    @Override
     public float fire(){
         return ammoPower;
     }
@@ -102,6 +103,7 @@ public class EnemyStarShip implements SpaceFighter {
     * @brief  returns the shield energy level of the enemy ship
     * @return shieldPower
     */
+    @Override
     public float protection(){
         return shieldPower;
     }
@@ -111,6 +113,7 @@ public class EnemyStarShip implements SpaceFighter {
     * @param shot power of the shot
     * @return the result of the shot
     */
+    @Override
     public ShotResult receiveShot (float shot){
         if (shot > shieldPower)
             return ShotResult.DONOTRESIST;
@@ -122,6 +125,7 @@ public class EnemyStarShip implements SpaceFighter {
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "EnemyStarShip [ name " + name 

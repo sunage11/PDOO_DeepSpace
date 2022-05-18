@@ -61,6 +61,7 @@ public class SuppliesPackage {
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "SuppliesPackage [ ammoPower " + ammoPower 

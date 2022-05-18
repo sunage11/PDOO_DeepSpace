@@ -125,6 +125,7 @@ public class SpecificDamage extends Damage{
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "Damage [ nShields " + getNShields() 
@@ -137,6 +138,7 @@ public class SpecificDamage extends Damage{
     * @brief builds a new SpecificDamageToUI object from *this
     * @return SpecificDamageToUI
     */
+    @Override
     SpecificDamageToUI getUIversion (){
         return new SpecificDamageToUI (this);
     }

@@ -34,6 +34,7 @@ public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
     * @brief builds a new BetaPowerEfficientSpaceStationToUI object from *this
     * @return WeaponToUI
     */
+    @Override
     BetaPowerEfficientSpaceStationToUI getUIversion () {
         return new BetaPowerEfficientSpaceStationToUI (this);
     }

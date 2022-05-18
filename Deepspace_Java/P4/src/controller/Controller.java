@@ -68,14 +68,24 @@ public class Controller {
               break;
             case STATIONWINS :
               view.wonCombatMessage();
-              if (game.haveAWinner()) {
-                  view.wonGameMessage();
-                  System.exit (0);
-              }
+              haveAWinner();
               break;
             case NOCOMBAT :
               view.noCombatMessage();
               break;
+            case STATIONWINSANDCONVERTS :
+              view.conversionMessage();
+              haveAWinner();
+              break;
+         
+        }
+    }
+    
+    void haveAWinner(){
+        
+        if (game.haveAWinner()) {
+            view.wonGameMessage();
+            System.exit (0);
         }
     }
     

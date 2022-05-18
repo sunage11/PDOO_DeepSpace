@@ -73,8 +73,27 @@ public class SpaceCity extends SpaceStation {
     * @brief builds a new SpaceCityToUI object from *this
     * @return WeaponToUI
     */
+    @Override
     SpaceCityToUI getUIversion () {
         return new SpaceCityToUI (this);
     }
+    
+    /**
+     * @brief toString
+    * @return String with info about the instance
+    */
+     /*@Override
+    public String toString () {
+        
+        String output = super.toString();
+        output += "\n Los colaboradores son: \n";
+        
+        int size = collaborators.size();
+        for(int i=0; i< size; i++)
+            output += collaborators[i].toString();
+            
+        
+        return output;
+    }*/
     
   }

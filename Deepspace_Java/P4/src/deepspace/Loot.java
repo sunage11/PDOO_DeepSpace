@@ -128,6 +128,7 @@ public class Loot {
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "Loot [ nSupplies " + nSupplies 

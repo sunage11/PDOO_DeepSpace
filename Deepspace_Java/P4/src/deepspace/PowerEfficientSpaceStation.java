@@ -42,6 +42,7 @@ public class PowerEfficientSpaceStation extends SpaceStation {
     * @brief builds a new PowerEfficientSpaceStationToUI object from *this
     * @return WeaponToUI
     */
+    @Override
     PowerEfficientSpaceStationToUI getUIversion () {
         return new PowerEfficientSpaceStationToUI (this);
     }

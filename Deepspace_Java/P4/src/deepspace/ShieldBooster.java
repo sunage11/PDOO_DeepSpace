@@ -46,6 +46,7 @@ public class ShieldBooster implements CombatElement {
     * @brief Getter with package visibility
     * @return uses value
     */
+    @Override
     public int getUses () {
         return uses;
     }
@@ -55,6 +56,7 @@ public class ShieldBooster implements CombatElement {
     * or 1.0 otherwise
     * @return boost value or 1.0
     */
+    @Override
     public float useIt () {
         if (uses > 0) {
             uses--;
@@ -76,6 +78,7 @@ public class ShieldBooster implements CombatElement {
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "ShieldBooster [ name " + name 

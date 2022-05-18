@@ -184,6 +184,7 @@ public class SpaceStation implements SpaceFighter {
     * firing power is multiplied by the enhancing factors provided by all weapons.
     * @return its energy or power
     */
+    @Override
     public float fire () {
 
         float factor = 1;
@@ -335,6 +336,7 @@ public class SpaceStation implements SpaceFighter {
     * all the shield enhancers available.
     * @return the energy of the protective shield
     */
+    @Override
     public float protection () {
         float factor = 1;
         Iterator<ShieldBooster> it = shieldBoosters.iterator();
@@ -377,6 +379,7 @@ public class SpaceStation implements SpaceFighter {
     * @param shot energy of the shot
     * @return  the result of whether the shot has been resisted or not
     */
+    @Override
     public ShotResult receiveShot (float shot) {
         
         float myProtection = protection();
@@ -486,6 +489,7 @@ public class SpaceStation implements SpaceFighter {
     * @brief toString
     * @return String with info about the instance
     */
+    @Override
     public String toString () {
         
         String output = "SpaceStation [ MAXFUEL " + MAXFUEL 
