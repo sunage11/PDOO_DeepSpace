@@ -69,13 +69,20 @@ class Controller
           @view.escapeMessage()
         when DS::CombatResult::STATIONWINS
           @view.wonCombatMessage()
-          if @model.haveAWinner()
-            @view.wonGameMessage()
-            exit(0)
-          end
+          haveAWinner
+        when DS::CombatResult::STATIONWINSANDCONVERTS
+          @view.wonCombatMessage()
+          haveAWinner
         when DS::CombatResult::NOCOMBAT
           @view.noCombatMessage()
         end
+    end
+
+    def haveAWinner
+      if @model.haveAWinner()
+        @view.wonGameMessage()
+        exit(0)
+      end
     end
 
     def getUIversion() 

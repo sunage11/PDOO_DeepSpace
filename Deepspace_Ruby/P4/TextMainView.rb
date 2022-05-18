@@ -323,6 +323,10 @@ class TextMainView
   def wonCombatMessage()
     puts "Has GANADO el combate. \tDisfruta de tu botín."
   end
+
+  def wonCombatAndConvertMessage()
+    puts "Has GANADO el combate. \tDisfruta de tu botín. \nTambién te has CONVERTIDO a SpaceCity."
+  end
   
   def wonGameMessage() 
     puts "\n\tHAS GANADO LA PARTIDA"
