@@ -12,19 +12,19 @@ package deepspace;
  */
 public class PowerEfficientSpaceStation extends SpaceStation{
     
-    private final float EFFICIENCYFACTOR=1.10f;
+    private static final float EFFICIENCYFACTOR=1.10f;
     
     PowerEfficientSpaceStation (SpaceStation station){
         super(station);
     }
     
     @Override
-    float fire(){
+    public float fire(){
         return super.fire()*EFFICIENCYFACTOR;
     }
     
     @Override
-    float protection(){
+    public float protection(){
         return super.protection()*EFFICIENCYFACTOR;
     }
     

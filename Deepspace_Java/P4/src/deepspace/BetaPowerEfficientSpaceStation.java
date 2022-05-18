@@ -11,7 +11,7 @@ package deepspace;
  */
 public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
     
-    private final float EXTRAEFFICIENCY = 1.2f;
+    private static final float EXTRAEFFICIENCY = 1.2f;
     private Dice dice;
 
     BetaPowerEfficientSpaceStation(BetaPowerEfficientSpaceStation s) {

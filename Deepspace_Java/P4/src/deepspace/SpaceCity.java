@@ -78,8 +78,3 @@ public class SpaceCity extends SpaceStation {
     }
     
   }
-<<<<<<< HEAD
-    
-
-=======
->>>>>>> bec4f4ec25a0443cb5270be7666d507e1b94baf7
