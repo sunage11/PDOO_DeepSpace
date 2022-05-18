@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
 # Loot
 # It represents the loot that a station can get if it beats an enemy starship
@@ -12,13 +12,17 @@ module Deepspace
 
         class Loot 
 
+            attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :getEfficient, :spaceCity
+
             # Constructor
-            def initialize (s, w, sh, h, m)
+            def initialize (s, w, sh, h, m, g=false, sc=false)
                 @nSupplies  = s
                 @nWeapons   = w 
                 @nShields   = sh 
                 @nHangars   = h
                 @nMedals    = m 
+                @getEfficient = g
+                @spaceCity = sc
             end
 
             #Copy constructor 
@@ -29,27 +33,6 @@ module Deepspace
                 @nHangars   = e.nHangars
                 @nMedals    = e.nMedals 
             end
-            
-            # Getters
-            def nSupplies
-                @nSupplies
-            end
-
-            def nWeapons
-                @nWeapons
-            end
-
-            def nShields
-                @nShields
-            end
-
-            def nHangars
-                @nHangars
-            end
-
-            def nMedals
-                @nMedals
-            end
 
             # builds a new LootToUI object from self
             def getUIversion
@@ -58,11 +41,7 @@ module Deepspace
 
             #toString
             def to_s
-                output = "Loot [ nSupplies #{@nSupplies} ; " +
-                         "nWeapons #{@nWeapons} ; " +
-                         "nShields  #{@nShields} ; " +
-                         "nHangars  #{@nHangars} ; " +
-                         "nMedals  #{@nMedals} ]"
+                return getUIversion().to_s
             end
         end
 

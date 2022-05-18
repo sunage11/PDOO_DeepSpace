@@ -79,8 +79,7 @@ module Deepspace
 
         #toString
         def to_s
-            output = "Damage [ nShields #{@nShields} ; " +
-                     "weapons  #{@weapons.to_s} ]"
+            return getUIversion().to_s
         end
 
         def getUIversion

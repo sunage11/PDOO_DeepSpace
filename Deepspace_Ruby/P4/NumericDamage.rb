@@ -38,7 +38,7 @@ module Deepspace
             if (@nWeapons>0)
                 @nWeapons -= 1
             end
-        end
+        end 
 
         # returns true if *this does not imply any accessory loss
         def hasNoEffect
@@ -52,8 +52,7 @@ module Deepspace
 
         #toString
         def to_s
-            output = "Damage [ nShields #{@nShields} ; " +
-                    "nWeapons #{@nWeapons} ]"
+            return getUIversion().to_s
         end
 
         #getUIversion

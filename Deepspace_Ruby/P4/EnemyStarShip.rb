@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
 # EnemyStarShip
 # It represents 
@@ -22,7 +22,7 @@ module Deepspace
             @ammoPower=a;
             @shieldPower=s;
             @loot=l;
-            @damage =  Damage.newCopy(d);
+            @damage = damage;
         end
 
         #Copy constructor 
@@ -57,6 +57,10 @@ module Deepspace
             end 
         end
 
-        
+        # to_s
+        def to_s
+            return getUIversion().to_s
+        end
+      
     end
 end

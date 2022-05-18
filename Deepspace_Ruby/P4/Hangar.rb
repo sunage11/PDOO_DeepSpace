@@ -100,9 +100,7 @@ module Deepspace
 
         #toString
         def to_s
-            output = "Hangar [ maxElements #{@maxElements} ; " +
-                     "shieldBoosters #{@shieldBoosters.to_s} ; " +
-                     "weapons  #{@weapons.to_s} ]"
+            return getUIversion().to_s
         end
      
 

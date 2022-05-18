@@ -53,9 +53,7 @@ module Deepspace
 
         #toString
         def to_s
-            output = "Weapon [ name #{@name} ; " +
-                     "type #{@type} ; " +
-                     "uses  #{@uses} ]"
+            return getUIversion().to_s
         end
         
          #To UI

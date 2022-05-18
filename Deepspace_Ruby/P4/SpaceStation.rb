@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
 # SpaceStation
 # 
@@ -14,7 +14,7 @@ module Deepspace
         @@MAXFUEL = 100
         @@SHIELDLOSSPERUNITSHOT = 0.1
         
-        # Constructores HACER
+        # Constructores
         def initialize (n, s)
             @ammoPower = s.ammoPower
             @fuelUnits = s.fuelUnits
@@ -25,8 +25,34 @@ module Deepspace
             @hangar = nil
             @weapons = Array.new
             @shieldBoosters = Array.new 
+        end
+
+        # Ctor copia
+        def newCopy (s)
+            @name = s.name
+            @ammoPower = s.ammoPower
+            @fuelUnits = s.fuelUnits
+            @shieldPower = s.shieldPower
+            @nMedals = s.nMedals
+
+            if (!s.pendingDamage.nil?)
+                @pendingDamage = s.pendingDamage.copy
+            else
+                @pendingDamage = nil
+            end
+
+            if (!s.hangar.nil?)
+                @hangar = Hangar.newCopy(s.hangar)
+            else
+                @hangar = nil
+            end
+            
+            @shieldBoosters = Array.new(s.shieldBoosters)
+
+            @weapons = Array.new(s.weapons)
 
         end
+    
 
         # Set the amount of fuel to the value passed without ever 
         # exceeding the limit.
@@ -135,7 +161,7 @@ module Deepspace
             @fuelUnits/@@MAXFUEL
         end
 
-        # builds a new WeaponToUI object from self
+        # builds a new SpaceStationToUI object from self
         def getUIversion
             SpaceStationToUI.new(self)
         end
@@ -265,6 +291,14 @@ module Deepspace
             medals = loot.nMedals
             @nMedals+=medals
 
+            if (loot.getEfficient)
+                output = Transformation::GETEFFICIENT
+            elsif (loot.spaceCity)
+                output = Transformation::SPACECITY
+            else
+                output = Transformation::NOTRANSFORM
+            end
+
         end
 
         #Calculates the adjusted damage from param d to the weapon and shield
@@ -277,6 +311,11 @@ module Deepspace
         #any pendingDamage at all or with any effect
         def validState
             return ((@pendingDamage == nil ) || (@pendingDamage.hasNoEffect))
+        end
+
+        # to_s
+        def to_s
+            return getUIversion().to_s
         end
 
 

@@ -1,6 +1,6 @@
 # BOLÍVAR PELÁEZ, CLARA
 # RUIZ GÓMEZ, SOLEDAD
-# 2º DGIIM - PDOO - Practice 3 DeepSpace
+# 2º DGIIM - PDOO - Practice 4 DeepSpace
 
 require_relative 'GameCharacter'
 
@@ -17,6 +17,7 @@ module Deepspace
             @NSHIELDSPROB  = 0.25
             @NWEAPONSPROB  = 0.33
             @FIRSTSHOTPROB = 0.5
+            @EXTRAEFFICIENCYPROB = 0.8
 
             @generator     = Random.new();
         end
@@ -75,11 +76,14 @@ module Deepspace
         # not. The probability of this move will be greater as the spacial station's 
         # potential speed is.
          def spaceStationMoves (speed)
-            if (@generator.rand() < speed)
-                true
-            else
-                false
-            end
+            return (@generator.rand() < speed)
+        end
+
+        # Determines whether a spacial station will escape to avoid a shot or
+        # not. The probability of this move will be greater as the spacial station's 
+        # potential speed is.
+        def extraEfficiency
+            return (@generator.rand() <= @EXTRAEFFICIENCYPROB)
         end
 
 
