@@ -5,6 +5,9 @@
 # SpaceStation
 # 
 
+require_relative 'SpaceStationToUI'
+require_relative 'Transformation'
+
 module Deepspace
 
     class SpaceStation
@@ -291,7 +294,7 @@ module Deepspace
             medals = loot.nMedals
             @nMedals+=medals
 
-            if (loot.getEfficient)
+            if (loot.efficient)
                 output = Transformation::GETEFFICIENT
             elsif (loot.spaceCity)
                 output = Transformation::SPACECITY

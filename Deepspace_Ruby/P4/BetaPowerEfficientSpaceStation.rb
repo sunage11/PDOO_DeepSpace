@@ -5,6 +5,8 @@
 # BetaPowerEfficientSpaceStation
 # 
 
+require_relative 'Dice'
+
 module Deepspace
 
     class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
@@ -19,7 +21,7 @@ module Deepspace
 
         # fire
         def fire 
-            if (dice.extraEfficiency)
+            if (@dice.extraEfficiency)
                 super*@@EXTRAEFFICIENCYFACTOR
             else
                 super

@@ -1,16 +1,16 @@
 #encoding:utf-8
 
-require_relative '../lib/NumericDamage'
-require_relative '../lib/SpecificDamage'
-require_relative '../lib/SpaceCity'
-require_relative '../lib/PowerEfficientSpaceStation'
-require_relative '../lib/BetaPowerEfficientSpaceStation'
-require_relative '../lib/CardDealer'
-require_relative '../lib/Weapon'
-require_relative '../lib/ShieldBooster'
-require_relative '../lib/WeaponType'
-require_relative '../lib/SuppliesPackage'
-require_relative '../lib/SpaceStation'
+require_relative 'NumericDamage'
+require_relative 'SpecificDamage'
+require_relative 'SpaceCity'
+require_relative 'PowerEfficientSpaceStation'
+require_relative 'BetaPowerEfficientSpaceStation'
+require_relative 'CardDealer'
+require_relative 'Weapon'
+require_relative 'ShieldBooster'
+require_relative 'WeaponType'
+require_relative 'SuppliesPackage'
+require_relative 'SpaceStation'
 
 #Class for test the foruth practice of the subject
 #
@@ -91,7 +91,7 @@ class TestP4
             weapon_list << WeaponType::LASER 
             s_num = rand(1..5)
 
-            specific_test = SpecificDamage.new(weapon_list, s_num)
+            specific_test = SpecificDamage.new(s_num, weapon_list)
 
             puts "Creating new SpecificDamage(#{weapon_list.join(",")}, #{s_num})"
             puts "The state of the new SpecificDamage is:"
@@ -255,10 +255,10 @@ class TestP4
 
     public 
     def self.main
-        #testNumericDamage
-        #testSpecificDamage
-        #testSpaceCity
-        #testPowerEfficientStation
+        testNumericDamage
+        testSpecificDamage
+        testSpaceCity
+        testPowerEfficientStation
         testBetaPowerEfficientStation
     end
 end #End class

@@ -12,7 +12,7 @@ module Deepspace
 
         class Loot 
 
-            attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :getEfficient, :spaceCity
+            attr_reader :nSupplies, :nWeapons, :nShields, :nHangars, :nMedals, :efficient, :spaceCity
 
             # Constructor
             def initialize (s, w, sh, h, m, g=false, sc=false)

@@ -5,6 +5,9 @@
 # SpaceCity
 # 
 
+require_relative 'SpaceStation'
+require_relative 'SpaceCityToUI'
+
 module Deepspace
 
     class SpaceCity < SpaceStation

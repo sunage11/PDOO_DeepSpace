@@ -11,8 +11,6 @@ require_relative 'DamageToUI'
 module Deepspace
 
     class Damage
-
-        attr_reader :nShields
         
         #Constructor
         def initialize(s)
@@ -24,8 +22,11 @@ module Deepspace
         # the parameters w ans sb in order to modify the output value so it does not
         # imply losing weapons or shields that are nos specified in w or sb
         public
+
+        attr_reader :nShields
+
         def adjust (s)
-            [@nShields, s.length].min 
+            return [s.length, @nShields].min 
         end
 
         # it decrements nShields in one unit
